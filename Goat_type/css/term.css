@@ -1,0 +1,33 @@
+.conteiner{
+    padding: 10%;
+}
+body{
+    background-color: rgba(50,52,55);
+}
+#logo{
+    width: 300px;
+}
+h2{
+    font-size: xx-large;
+    color:rgb(209, 208, 197);
+}
+li{
+    font-size: x-large;
+    color: rgb(209, 208, 197);
+}
+@media only screen and (max-width: 980px){
+    .conteiner{
+        padding: 2%;
+    }
+    #logo{
+        width: 200px;
+    }
+    h2{
+        font-size: large;
+        color:rgb(209, 208, 197);
+    }
+    li{
+        font-size: medium;
+        color: rgb(209, 208, 197);
+    }
+};

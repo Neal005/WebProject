@@ -1,0 +1,90 @@
+.search_sp{
+    margin: 10px 2px;
+    padding-top: 15px;
+    background: linear-gradient(to bottom, #9af4a4, #fff);
+    border-radius: 15px;
+}
+.pizza-header{
+    border-bottom-color: 1px solid black;
+    padding-top: 5px;
+}
+
+.anchor{
+    border-bottom: 2px solid black;
+    border-left: double black;
+    background: linear-gradient(to bottom, #fff, #d4f5d0);
+    color: #00090f;
+    margin-top: 10px;
+}
+
+.color_btn{
+    background-color: #f79952;
+    border-color: #fff;
+}
+
+.banner{
+    margin-top: 3px;
+}
+
+.qual-area{
+    width: 40%;
+    display: inherit;
+    padding: 0 5px;
+    vertical-align: middle;
+    text-align: center;
+    align-items: center;
+}
+
+.image-here{
+    width: 300px;
+    height: 300px;
+}
+
+#price{
+    display: relative;
+    margin-left: auto;
+}
+
+#description{
+    width: 150px;
+}
+
+#exampleModalLabel{
+    color: #f54242;
+    font-size: 20px;
+}
+
+.text-font{
+    font-size: 10px;
+}
+
+/**
+* ! trang mieng
+**/
+
+.trangmieng{
+    display: flex;
+}
+.trangmieng-item{
+    flex:1;
+    display: grid;
+}
+.card-dgrid{
+    border: none;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 3px 0 rgba(0, 0, 0, 0.23);
+}
+.trangmieng-card-body{
+    display: grid;
+    grid-template-rows: 1fr 1.6fr 0.5fr;
+}
+.trangmieng-card-body button{
+    width: fit-content;
+    height: fit-content;
+}
+/* h5{
+    height: 48px;
+} */
+/* 
+.card-text{
+    height: 96px;
+} */

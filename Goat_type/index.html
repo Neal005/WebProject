@@ -1,0 +1,76 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/global.css" />
+  <link rel="stylesheet" href="./bootstrap/css/bootstrap.css" />
+  <link rel="stylesheet" href="./css/home.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="./bootstrap/js/bootstrap.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <title>GOAT TYPE</title>
+</head>
+
+<body>
+  <div class="container w-100 mw-100" id="container">
+    <header id="header">
+      <img src="./images/logo.png" alt="logo" id="logo" />
+      <div id="account">
+        <span>Full Dev</span>
+        <img src="./images/avatar.webp" alt="avatar" id="avatar" />
+      </div>
+    </header>
+    <nav id="nav">
+      <div id="config-text" class="nav-part"></div>
+      <span class="space"></span>
+      <div id="config-text-2" class="nav-part"></div>
+      <span class="space"></span>
+      <div id="optionals" class="nav-part"></div>
+    </nav>
+    <main class="row" id="main">
+      <div id="wrappertext">
+        <div id="text"></div>
+        <p id="restarttext">
+          <i class="fa-solid fa-arrow-pointer fa-bounce"></i> Nhấn vào đây để
+          bắt đầu lại
+        </p>
+      </div>
+      <div id="control">
+        <div id="specifications">
+          <div id="result" class="specification-item">
+            <span id="wpm-num" class="num">0</span>wpm
+          </div>
+          <div id="time" class="specification-item">
+            <span id="time-num" class="num">0</span>giây
+          </div>
+        </div>
+        <input type="text" title="Input for typing test" id="input" spellcheck="false" />
+        <button id="redo" title="Retyping">
+          <i class="fa-solid fa-rotate"></i>
+        </button>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="left-part flex-row" id="left">
+        <div class="left-contact left-item">
+          <i class="fa-solid fa-envelope fa-beat"></i>
+          <span>Liên hệ</span>
+        </div>
+        <div class="left-github left-item">
+          <i class="fa-brands fa-github fa-beat"></i>
+          <span>GibHub</span>
+        </div>
+        <div class="left-github left-item">
+          <i class="fa-regular fa-border-all fa-beat"></i>
+          <a href="./source.html">Source</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+<script src="./js/home.js" type="module"></script>
+</html>

@@ -1,0 +1,116 @@
+{
+  "vi": [
+    {
+      "id": 1,
+      "title": "Reactjs",
+      "content": "Theo thống kê từ trang web TIOBE, ReactJS đang đứng thứ 8 trong danh sách 20 ngôn ngữ lập trình được sử dụng nhiều nhất trên toàn thế giới vào tháng 4 năm 2023.ReactJS là một thư viện JavaScript mã nguồn mở được phát triển bởi Facebook. Hiện nay, nó đang là một trong những công nghệ phổ biến nhất trong lĩnh vực Front-end.     Ngoài ra, ReactJS cũng được sử dụng rộng rãi bởi nhiều tập đoàn công nghệ lớn như Netflix, Airbnb, Instagram, Dropbox và nhiều hơn nữa. Chứng tỏ sức mạnh và tiềm năng của thư viện này trong việc xây dựng các ứng dụng web và di động hiệu quả."
+    },
+    {
+      "id": 2,
+      "title": "Nodejs",
+      "content": "NodeJS được phát triển bởi Ryan Dahl vào năm 2009 và hiện được quản lý bởi Node.js Foundation.Theo khảo sát State of JS 2020, NodeJS là một trong những công nghệ phía máy chủ phổ biến nhất, với 49,9% số người khảo sát cho biết họ đã sử dụng nó trước đây.NodeJS có hơn 1 triệu lượt tải xuống hàng tuần trên npm, là một trong những thư viện JavaScript được tải xuống nhiều nhất.NodeJS được sử dụng bởi nhiều trang web và công ty phổ biến, bao gồm LinkedIn, Netflix, Walmart và eBay."
+    },
+    {
+      "id": 3,
+      "title": "Python",
+      "content": "Python là một ngôn ngữ lập trình thông dịch, được phát triển bởi Guido van Rossum vào năm 1991. Python được thiết kế để đọc dễ dàng và có cú pháp đơn giản, giúp cho các nhà phát triển có thể viết mã nhanh chóng và dễ dàng. Python là một trong những ngôn ngữ lập trình phổ biến nhất trên thế giới và được sử dụng trong nhiều lĩnh vực khác nhau, bao gồm khoa học dữ liệu, trí tuệ nhân tạo, phát triển web và nhiều hơn nữa. Theo khảo sát State of Developer Ecosystem 2021 của Jetbrains, Python là ngôn ngữ lập trình phổ biến thứ 3 trên thế giới, chỉ sau Java và JavaScript.Python là một trong những ngôn ngữ lập trình được yêu thích nhất trên Github, với hơn 1,3 triệu repository được tạo ra bằng Python.Python là một trong những ngôn ngữ lập trình được sử dụng nhiều nhất trong lĩnh vực khoa học dữ liệu và trí tuệ nhân tạo."
+    },
+    {
+      "id": 4,
+      "title": "Google",
+      "content": "Theo thống kê của Statista, Google là công ty công nghệ có giá trị thị trường cao nhất trên thế giới vào năm 2021, với giá trị thị trường lên đến hơn 1,5 nghìn tỷ USD.Google là công ty công nghệ lớn nhất thế giới về doanh thu, với doanh thu năm 2020 lên đến hơn 181 tỷ USD.Google là công ty công nghệ có số lượng nhân viên lớn nhất thế giới, với hơn 135 nghìn nhân viên trên toàn cầu vào năm 2021."
+    },
+    {
+      "id": 5,
+      "title": "Anime",
+      "content": "Anime là một phương tiện đa dạng kết hợp kết hợp phương pháp sản xuất đặc biệt thích ứng cùng công nghệ mới nổi. Nó là sự kết hợp giữa nghệ thuật đồ họa, phương thức mô tả nhân vật, kỹ thuật dựng phim, trí tưởng tượng và chủ nghĩa cá nhân. So với hoạt hình phương tây, sản xuất anime thường ít tập trung vào chuyển động mà thay vào đó là các kĩ thuật như dựng phim, lia máy hay chụp góc. Một số phong cách nghệ thuật khác như tỉ lệ nhân vật hay đặc điểm trong thể loại này đa dạng với đặc trưng những đôi mắt to và có hồn."
+    },
+    {
+      "id": 6,
+      "title": "Rap",
+      "content": "Rap hay ráp là một hình thức nghệ thuật trong văn hóa hip hop xuất phát từ Âu Mỹ và được đặc trưng bằng việc trình diễn thông qua việc nói hoặc hô vang lời bài hát, ca từ một cách có vần điệu, kết hợp với động tác nhảy nhót, tạo hình. Rap thường không có cao độ và trường độ mà người rap có thể hát nhanh hay chậm tùy ý. Có thể sáng tạo những flow cho riêng mình mà không cần theo quy tắc nào."
+    },
+    {
+      "id": 7,
+      "title": "Quần đảo Hoàng Sa",
+      "content": "Quần đảo nằm cách miền Trung Việt Nam khoảng một phần ba khoảng cách đến những đảo phía bắc của Philippines; cách đảo Lý Sơn của Việt Nam khoảng 200 hải lý và cách đảo Hải Nam của Trung Quốc khoảng 230 hải lý. Chữ Hoàng Sa có nghĩa là cát vàng. Quần đảo Hoàng Sa là một tập hợp trên 30 đảo san hô, cồn cát, ám tiêu (rạn) san hô nói chung (trong đó có nhiều ám tiêu san hô vòng hay còn gọi là rạn vòng) và bãi ngầm thuộc biển Đông, ở vào khoảng một phần ba quãng đường từ miền Trung Việt Nam đến phía bắc Philippines."
+    },
+    {
+      "id": 8,
+      "title": "Quần đảo Trường Sa",
+      "content": "Tại Hội nghị San Francisco năm 1951 về việc phân định các vùng lãnh thổ, hải đảo mà Đế quốc Nhật Bản từng chiếm giữ, quần đảo Trường Sa là đối tượng tuyên bố chủ quyền của nhiều bên tranh chấp bao gồm Liên hiệp Pháp, Trung Quốc, Đài Loan, Philippines, Malaysia và Indonesia. Kết quả là Hội nghị không công nhận chủ quyền của quốc gia nào, quần đảo này được coi là vô chủ và càng gây ra tranh chấp dữ dội hơn sau này. Tất cả những nước tham gia tranh chấp quần đảo này, trừ Brunei, đều có quân đội cùng vũ khí, khí tài, thiết bị và nhân viên quân sự đồn trú tại nhiều căn cứ trên các đảo nhỏ và đá ngầm khác nhau. Năm 1956, Đài Loan chiếm giữ đảo Ba Bình. Đầu thập niên 1970, Philippines chiếm 7 đảo và các rạn đá thuộc khu vực phía đông quần đảo. Tháng 3 năm 1988, Việt Nam và Trung Quốc đụng độ quân sự tại ba rạn đá là Gạc Ma, Cô Lin và Len Đao. Tháng 2 năm 1995 và tháng 11 năm 1998, giữa Trung Quốc và Philippines đã hai lần bùng phát căng thẳng chính trị do hành động giành và củng cố quyền kiểm soát đá Vành Khăn của phía Trung Quốc. Dù rằng Công ước Liên Hợp Quốc về Luật biển đã ra đời nhằm xác định các vấn đề về ranh giới trên biển nhưng bản thân Công ước lại không có điều khoản nào quy định cách giải quyết các tranh chấp về chủ quyền đối với các thực thể thuộc quần đảo."
+    },
+    {
+      "id": 9,
+      "title": "Thất Sơn Bảy Núi",
+      "content": "Bảy Núi là 7 ngọn núi tiêu biểu trong số 37 ngọn núi ở huyện Tri Tôn và thị xã Tịnh Biên. Khi xưa, vùng Bảy Núi phần lớn là rừng rậm nguyên sinh với nhiều loại gỗ quý. Đến thế kỷ thứ 17, nơi đây hãy còn hoang vu. Thái Văn Trừng đã xếp các quần thể rừng của Bảy Núi trong kiểu rừng kín nửa rụng lá, ẩm nhiệt đới với cấu trúc 3 tầng rõ rệt: tầng cây gỗ như dầu, căm xe, lăng ổi, bời lời, quế, gõ mật, nính..., tầng cây bụi như sâm ngọt, sâm núi, mua lông, bưởi, chanh…, tầng thân thảo và quyết thực vật như sa nhân, gừng dại, giềng rừng. Ở trong sách trên còn cho biết sự hiện diện của những người Việt đến sinh sống, hòa nhập với người Khmer, ở vùng Bảy núi vào mấy thế kỷ trước. Họ đến để khai thác nguồn lợi thiên nhiên, lập vườn cây ăn trái, trồng hoa màu, tìm dược thảo, làm ruộng ở chân núi, bắt cá vào mùa hạn ở các ao đìa..."
+    },
+    {
+      "id": 10,
+      "title": "Javascript",
+      "content": "Năm 1998, JavaScript với phiên bản mới nhất là ECMAScript 2 phát hành và đến năm 1999 thì ECMAScript 3 được ra mắt. Năm 2016, ứng dụng JavaScript đã đạt kỷ lục lên tới 92% website sử dụng, đồng thời cũng được đánh giá là một công cụ cực kỳ quan trọng đối với lập trình viên. JavaScript là ngôn ngữ lập trình website phổ biến hiện nay, nó được tích hợp và nhúng vào HTML giúp website trở nên sống động hơn. JavaScript đóng vai trò như là một phần của trang web, thực thi cho phép Client-side script từ phía người dùng cũng như phía máy chủ (Nodejs) tạo ra các trang web động. JavaScript là một ngôn ngữ lập trình thông dịch với khả năng hướng đến đối tượng. Là một trong 3 ngôn ngữ chính trong lập trình web và có mối liên hệ lẫn nhau để xây dựng một website sống động, chuyên nghiệp. Chương trình rất dễ học. Những lỗi Javascript rất dễ để phát hiện, từ đó giúp bạn sửa lỗi một cách nhanh chóng hơn. Những lỗi Javascript rất dễ để phát hiện, từ đó giúp bạn sửa lỗi một cách nhanh chóng hơn. Những lỗi Javascript rất dễ để phát hiện, từ đó giúp bạn sửa lỗi một cách nhanh chóng hơn. "
+    },
+    {
+      "id": 11,
+      "title": "Anonymous",
+      "content": "Anonymous bắt nguồn từ năm 2003 trên hình thành từ lời kêu gọi trên Forum 4chan đại diện cho khái niệm của nhiều người dùng cộng đồng trực tuyến và ngoại tuyến đồng thời tồn tại dưới dạng một mạng lưới vô chính phủ , được số hóa. Anonymous (được sử dụng như một danh từ chung) là một tập thể và phong trào mạng lưới liên kết mang tầm quốc tế của các nhà hoạt động và các tổ chức hacker xã hội ẩn danh.  Đúng như tên gọi, Anonymous hoạt động theo mô hình ngang hàng, không có thủ lĩnh thực thụ, không có bộ máy điều hành cụ thể, ai cũng có thể tự xưng mình là thành viên của tổ chức. Điều này đồng nghĩa với việc các thành viên có những ưu tiên khác nhau và cả nhóm không có lịch trình hoạt động rõ ràng.  Đúng như tên gọi, Anonymous hoạt động theo mô hình ngang hàng, không có thủ lĩnh thực thụ, không có bộ máy điều hành cụ thể, ai cũng có thể tự xưng mình là thành viên của tổ chức. Điều này đồng nghĩa với việc các thành viên có những ưu tiên khác nhau và cả nhóm không có lịch trình hoạt động rõ ràng."
+    },
+    {
+      "id": 12,
+      "title": "Microsoft",
+      "content": "Microsoft là một tập đoàn đa quốc gia của Hoa Kỳ đặt trụ sở chính tại Redmond, Washington; chuyên phát triển, sản xuất, kinh doanh bản quyền phần mềm và hỗ trợ trên diện rộng các sản phẩm và dịch vụ liên quan đến máy tính. Công ty được sáng lập bởi Bill Gates và Paul Allen vào ngày 4 tháng 4 năm 1975. Được thành lập để phát triển phần mềm trình thông dịch BASIC cho máy Altair 8800, Microsoft vươn lên thống trị thị trường hệ điều hành cho máy tính gia đình với MS-DOS giữa những năm 1980. Cổ phiếu của công ty sau khi được phát hành lần đầu ra thị trường đã tăng giá nhanh chóng và tạo ra 4 tỷ phú và 12.000 triệu phú trong công ty. Kể từ thập niên 1990, công ty đã đa dạng hóa sản phẩm hệ điều hành và tiến hành nhiều thương vụ thâu tóm công ty mà điển hình là sáp nhập LinkedIn với giá 26,2 tỉ đô la vào tháng 12 năm 2016, và Skype Technologies với 8,5 tỉ đô la vào tháng 5 năm 2011."
+    },
+    {
+      "id": 13,
+      "title": "Tesla",
+      "content": "Sinh ra và lớn lên ở Đế quốc Áo, Tesla theo học ngành kỹ thuật và vật lý vào những năm 1870 mà không cần bằng cấp, đồng thời tích lũy kinh nghiệm thực tế vào đầu những năm 1880 khi làm việc trong lĩnh vực điện thoại tại Continental Edison trong ngành năng lượng điện mới. Năm 1884, ông di cư đến Hoa Kỳ, nơi ông trở thành công dân nhập tịch. Ông ấy đã làm việc một thời gian ngắn tại Edison Machine Works ở Thành phố New York trước khi tự mình thành lập. Với sự giúp đỡ của các đối tác để tài trợ và tiếp thị các ý tưởng của mình, Tesla đã thành lập các phòng thí nghiệm và công ty ở New York để phát triển một loạt các thiết bị điện và cơ khí. Động cơ cảm ứng dòng điện xoay chiều (AC) của ông và các bằng sáng chế xoay chiều nhiều pha liên quan, được cấp phép bởi Westinghouse Electric vào năm 1888, đã mang về cho ông một số tiền đáng kể và trở thành nền tảng của hệ thống đa pha mà công ty đó cuối cùng đã tiếp thị. Cố gắng phát triển những phát minh mà ông có thể cấp bằng sáng chế và đưa ra thị trường, Tesla đã tiến hành một loạt các thí nghiệm với bộ tạo dao động cơ học / máy phát điện, ống phóng điện và hình ảnh tia X sơ khai. Ông cũng chế tạo một chiếc thuyền điều khiển không dây, một trong những chiếc đầu tiên từng được trưng bày. Tesla trở nên nổi tiếng với tư cách là một nhà phát minh và đã thể hiện những thành tựu của mình trước những người nổi tiếng và những người bảo trợ giàu có tại phòng thí nghiệm của mình, đồng thời được ghi nhận về tài năng của mình tại các buổi thuyết trình trước công chúng."
+    },
+    {
+      "id": 14,
+      "title": "Apple",
+      "content": "Apple được Steve Jobs, Steve Wozniak và Ronald Wayne thành lập vào tháng 4 năm 1976 để phát triển và bán máy tính cá nhân Apple I của Wozniak, mặc dù Wayne đã bán lại cổ phần của mình trong vòng 12 ngày. Nó được hợp nhất thành Apple Computer, Inc., vào tháng 1 năm 1977, và doanh số bán máy tính của nó, bao gồm cả Apple I và Apple II, đã tăng nhanh chóng. Jobs và Wozniak đã thuê một nhân viên thiết kế máy tính và có một dây chuyền sản xuất bắt đầu từ ga ra của Jobs. Apple ra mắt công chúng vào năm 1980 với thành công tài chính tức thì. Trong vài năm tiếp theo, Apple đã xuất xưởng những chiếc máy tính mới có giao diện người dùng đồ họa sáng tạo, chẳng hạn như Macintosh ban đầu vào năm 1984 và các quảng cáo tiếp thị của Apple cho sản phẩm của mình đã nhận được sự hoan nghênh rộng rãi. Tuy nhiên, giá sản phẩm cao và thư viện ứng dụng hạn chế đã gây ra nhiều vấn đề, cũng như tranh giành quyền lực giữa các giám đốc điều hành. Năm 1985, Wozniak rời Apple một cách thân thiện và vẫn là một nhân viên danh dự, trong khi Jobs từ chức để thành lập NeXT, dẫn theo một vài đồng nghiệp đi cùng."
+    }
+  ],
+  "en": [
+    {
+      "id": 1,
+      "title": "Vietnam",
+      "content": "The Socialist Republic of Vietnam, widely known as Vietnam, is not a strange name to the whole world. The country becomes a nation going places. Although this country is ravaged by a series of wars which causes serious damages, Vietnam in the eyes of the world is nice and peaceful. Vietnam is located in the eastern Indochina Peninsula in Southeast Asia, with Hanoi as its capital. With an area of ​​331,690 sq."
+    },
+    {
+      "id": 2,
+      "title": "ChatGPT",
+      "content": "This course provides a practical introduction to ChatGPT, from signing up to mastering its advanced features. Topics covered include conversing with ChatGPT, customizing it, using it for productivity and building chatbots, as well as advanced applications like language translation and generating creative content. Best practices and tips for using ChatGPT are also included."
+    },
+    {
+      "id": 3,
+      "title": "Facebook",
+      "content": "Facebook, American online social network service that is part of the company Meta Platforms. Facebook was founded in 2004 by Mark Zuckerberg, Eduardo Saverin, Dustin Moskovitz, and Chris Hughes, all of whom were students at Harvard University. Facebook became the largest social network in the world, with nearly three billion users as of 2021, and about half that number were using Facebook every day. The company’s headquarters are in Menlo Park, California.Access to Facebook is free of charge, and the company earns most of its money from advertisements on the website. New users can create profiles, upload photos, join a preexisting group, and start new groups. The site has many components, including Timeline, a space on each user’s profile page where users can post their content and friends can post messages;"
+    },
+    {
+      "id": 4,
+      "title": "GitHub",
+      "content": "People use GitHub to build some of the most advanced technologies in the world. Whether you’re visualizing data or building a new game, there’s a whole community and set of tools on GitHub that can help you do it even better. GitHub Skills’ “Introduction to GitHub” course guides you through everything you need to start contributing in less than an hour."
+    },
+    {
+      "id": 5,
+      "title": "Pacific Basin",
+      "content": "Pacific rim” and a variety of terms cognate to it, such as “Pacific Basin” and “Asia-Pacific,” have become commonplaces in geopolitical vocabulary over the last decade. Phrased in terms of human relations, moreover, the invention of the Pacific does not imply invention by design, but invention haphazardly by trial and error. Europeans literally stumbled on the Pacific in 1513, and it was not until 1788 that the Pacific came into existence as we know it today. The Pacific was invented by EuroAmericans in another sense: as a concept. The Pacific is a EuroAmerican success: an area of the world that did not even exist as an entity in human consciousness until only about two hundred years ago has been created in the image of EuroAmericans. The Pacific discourse appears from these alternative perspectives as a discourse intended to suppress contradictions fundamental to the Pacific as a regional construct."
+    },
+    {
+      "id": 6,
+      "title": "Polaris",
+      "content": "From the North Pole, all directions are south. Its latitude is 90 degrees north, and all lines of longitude meet there (as well as at the South Pole, on the opposite end of Earth). Polaris, the current North Star, sits almost motionless in the sky above the pole, making it an excellent fixed point to use in celestial navigation in the Northern Hemisphere. The North Pole sits in the middle of the Arctic Ocean, on water that is almost always covered with ice. The ice is about two to three meters (six to 10 feet) thick. The depth of the ocean at the North Pole is more than 4,000 meters (13,123 feet). The Canadian territory of Nunavut lies closest to the North Pole. Greenland, the world's largest island and an autonomous teterritory within the Kingdom of Denmark, is also close to the pole."
+    },
+    {
+      "id": 7,
+      "title": "Polaris",
+      "content": "From the North Pole, all directions are south. Its latitude is 90 degrees north, and all lines of longitude meet there (as well as at the South Pole, on the opposite end of Earth). Polaris, the current North Star, sits almost motionless in the sky above the pole, making it an excellent fixed point to use in celestial navigation in the Northern Hemisphere. The North Pole sits in the middle of the Arctic Ocean, on water that is almost always covered with ice. The ice is about two to three meters (six to 10 feet) thick. The depth of the ocean at the North Pole is more than 4,000 meters (13,123 feet). The Canadian territory of Nunavut lies closest to the North Pole. Greenland, the world's largest island and an autonomous teterritory within the Kingdom of Denmark, is also close to the pole."
+    },
+    {
+      "id": 8,
+      "title": "Da Vinci",
+      "content": "When he was 20, in 1472, the painters’ guild of Florence offered da Vinci membership, but he remained with Verrocchio until he became an independent master in 1478. Around 1482, he began to paint his first commissioned work, The Adoration of the Magi, for Florence’s San Donato, a Scopeto monastery. Da Vinci received no formal education beyond basic reading, writing and math, but his father appreciated his artistic talent and apprenticed him at around age 15 to the noted sculptor and painter Andrea del Verrocchio of Florence. For about a decade, da Vinci refined his painting and sculpting techniques and trained in mechanical arts. The family asked da Vinci to create a magnificent 16-foot-tall equestrian statue, in bronze, to honor dynasty founder Francesco Sforza. Da Vinci worked on the project on and off for 12 years, and in 1493 a clay model was ready to display. Imminent war, however, meant repurposing the bronze earmarked for the sculpture into cannons, and the clay model was destroyed in the conflict after the ruling Sforza duke fell from power in 1499."
+    }
+  ]
+}

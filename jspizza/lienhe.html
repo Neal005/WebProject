@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Liên hệ</title>
+   
+   <link rel="stylesheet" href="./bootstrap/css/bootstrap.css"/>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link rel="stylesheet" href="./assets/css/main.css">
+   <link rel="stylesheet" href="./assets/css/login_form.css">
+    <link rel="stylesheet" href="./assets/fontawesome-free-5.12.1-web/css/all.css"/>
+    <link rel="stylesheet" href="./assets/css/lienhe.css">
+    <link rel="stylesheet" href="/js/lienhe.js">
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="shortcut icon" href="./assets/images/logo3.jpg" type="image/vnd.microsoft.icon" />
+   </head>
+<body>
+  <header>
+    <div class="container header-wrapper d-flex pt-2 pb-1">
+      <div id="logo-section" class="col-2">
+        <div class="wrapper-logo d-grid">
+          <div><a href="index.html"><img class="logo-image rounded-circle" src="./assets/images/logo3.jpg" alt=""></a>
+          </div>
+          <div><a href="index.html">
+            <h2 class="logo-name text-uppercase text-color" style="letter-spacing: 1.5px; color: tomato;">jspizza</h2>
+          </a>
+        </div>  
+        </div>
+      </div>
+      <div id="nav-search-section" class="col-9 d-grid">
+        <div class="search-section row align-items-center justify-content-end m-0">
+          <div class="bar-search col-9 rounded-2">
+            <div class="bar-but-search d-flex row">
+              <input id="input-search" class="col-11 input-search border-0" type="text" placeholder="Nhập sản phẩm tìm kiếm ở đây">
+              <ul class="list-products-hint p-0"></ul>
+              <div class="col-1 button-search"><i class="fas fa-search py-2 text-color"></i></div>
+            </div>
+          </div>
+
+          <div class="col-2 button-search-mobile text-center p-0"><i class="fas fa-search py-2 text-color"></i></div>
+
+          <div class="account-section col-3" >
+            <div class="login d-flex m-0 justify-content-end">
+              <i style="position: relative; top: 5px;right: 3px; color: white;" class="fa-regular fa-user"></i>
+              <a class="text-color log-in px-1 text-decoration-none" href="#">Đăng nhập</a>
+              <div class="tag-partition"></div>
+              <a class="text-color register text-decoration-none px-1" href="#">Đăng ký</a>
+            </div>
+          </div>
+
+          <div class="account-login col-3">
+            <div class="info-user-login d-flex m-0 justify-content-center align-items-center">
+              <div class="logo-name-user d-flex p-1 rounded-2">
+                <i class="fa-solid fa-circle-user logo-user"></i>
+                <p class="d-inline-block"></p>
+                <div class="show-option rounded-2">
+                  <ul class="py-2 ps-0 m-0 d-grid">
+                    <li class="py-2 move-page-user">
+                      <div class="ps-3">Thông tin tài khoản</div>
+                    </li>
+                    <li class="py-2 sign-out">
+                      <div class="ps-3">Đăng xuất</div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div> 
+          <!-- Modal sign out -->
+          <div class="modal-sign-out justify-content-center align-items-center">
+            <div class="content p-3 rounded-2">
+              <div class="header d-flex justify-content-end">
+                <button type="button" class="btn-close"></button>
+              </div>
+              <div class="body d-flex justify-content-center align-items-center px-2 text-success">
+                <i class="fa-regular fa-circle-check"></i>
+                <p class="m-0 px-2">Đăng xuất thành công</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="nav-section pt-2">
+          <ul class="menu-nav d-flex m-0 p-0 align-items-center text-uppercase text-center">
+            <li class="col-3"><a class="text-color trangchu"  href="index.html">trang chủ</a></li>
+            <li class="col-3"><a class="text-color sanpham" href="sanpham.html">sản phẩm</a></li>
+            <li class="col-3"><a class="text-color chuongtrinh" href="chuongtrinh.html">chương trình</a></li>
+            <li class="col-3"><a class="text-color lienhe" href="lienhe.html">liên hệ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="cart-section" class="col-1">
+        <div class="d-flex justify-content-center wrapper-shopping-button"><a href="cart.html"><i class="fas fa-shopping-cart shopping-button text-color"></i></a></div>
+      </div>
+
+      <div id="nav-mobile" class="col-1">
+        <div class="d-flex justify-content-center wrapper-shopping-button"><i class="fa-solid fa-bars text-color bar-button"></i></div>
+      </div>
+
+      <div class="nav-overlay">
+        <div class="menu-mobile px-3 py-5">
+          <div class="mobile-account py-3">
+            <div class="login d-flex m-0 row align-items-center">
+              <i class="fa-solid fa-right-to-bracket col-2"></i>
+              <div class="col-10">
+                <a class="mobile-login text-decoration-none" href="#">Đăng nhập | </a>
+                <a class="mobile-register text-decoration-none px-1" href="#">Đăng ký</a>
+              </div>
+            </div>
+          </div>
+          <div class="mobile-log-in py-3">
+            <div class="info-user-login d-flex m-0 justify-content-center ">
+              <div class="logo-name-user d-flex p-1 rounded-2 align-items-center">
+                <i class="fa-solid fa-circle-user logo-user"></i>
+                <p class="d-inline-block m-0 px-1"></p>
+              </div>
+            </div>
+          </div> 
+          <div class="mobile-personal py-3">
+            <a class="row d-flex justify-content-center align-items-center text-decoration-none py-2" href="nguoidung.html">
+              <i class="fa-solid fa-user col-2 text-center"></i>
+              <p class="col-10 m-0">Thông tin tài khoản</p>
+            </a>
+            <a class="row d-flex justify-content-center align-items-center text-decoration-none py-2" href="cart.html">
+              <i class="fas fa-shopping-cart col-2 text-center"></i>
+              <p class="col-10 m-0">Giỏ hàng của tôi</p>
+            </a>
+          </div>
+          <div class="mobile-nav py-3">
+            <a class="row d-flex justify-content-center align-items-center text-decoration-none py-2" href="index.html">
+              <i class="fa-solid fa-house col-2 text-center"></i>
+              <p class="col-10 m-0">Trang chủ</p>
+            </a>
+            <a class="row d-flex justify-content-center align-items-center text-decoration-none py-2" href="sanpham.html">
+              <i class="fa-solid fa-puzzle-piece col-2 text-center"></i>
+              <p class="col-10 m-0">Sản phẩm</p>
+            </a>
+            <a class="row d-flex justify-content-center align-items-center text-decoration-none py-2" href="chuongtrinh.html">
+              <i class="fa-solid fa-scale-unbalanced-flip col-2 text-center"></i>
+              <p class="col-10 m-0">Chương trình</p>
+            </a>
+            <a class="row d-flex justify-content-center align-items-center text-decoration-none py-2" href="lienhe.html">
+              <i class="fa-solid fa-file-signature col-2 text-center"></i>
+              <p class="col-10 m-0">Liên hệ</p>
+            </a>
+          </div>
+          <div class="mobile-logout py-3">
+            <div class="row d-flex justify-content-center align-items-center text-decoration-none py-2">
+              <i class="fa-solid fa-right-from-bracket col-2 text-center"></i>
+              <p class="col-10 m-0">Đăng xuất</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay">
+      <input class="w-100 px-3 py-2 rounded-5 input-search-mobile" type="text" placeholder="Nhập sản phẩm tìm kiếm ở đây">
+    </div>
+  </header>
+  <main>
+    <div class="container1">
+      <div class="content">
+        <div class="left-side">
+          <div class="address details">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="topic">Địa chỉ</div>
+            <div class="text-one">Đường 3/2, Xuân Khánh, Ninh Kiều, Tp.Cần Thơ</div>
+          </div>
+          <div class="phone details">
+            <i class="fas fa-phone-alt"></i>
+            <div class="topic">Điện thoại</div>
+            <div class="text-one">+8401234567</div>
+            <div class="text-two">+8401234467</div>
+          </div>
+          <div class="email details">
+            <i class="fas fa-envelope"></i>
+            <div class="topic">Email</div>
+            <div class="text-one">pizza1@gmail.com</div>
+            <div class="text-two">pizza2@gmail.com</div>
+          </div>
+        </div>
+        <div class="right-side">
+          <div class="topic-text">Bạn có thắc mắc gì?</div>
+          <p>Hãy liên hệ với chúng tôi để được giải đáp chi tiết nào!</p>
+        <form id="form" action="#">
+          <div class="input-box">
+            <input id="username" type="text" placeholder="Vui lòng nhập tên của bạn">
+          </div>
+          <div class="input-box">
+            <input id="email" type="text" placeholder="Vui  lòng nhập email của bạn">
+          </div>
+          <div class="input-box message-box"> 
+              <input id="mess" type="text" placeholder="Vui lòng nhập tin nhắn của bạn">        
+          </div>
+  
+          <div class="button">
+            <button type="submit">Gửi ngay</button>
+          </div>
+        </form>
+      </div>
+        <div class="map spad" style="margin-top:-40px ;">
+          <div class="map-inner">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.84145434373!2d105.76842661441786!3d10.029938975270964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a0895a51d60719%3A0x9d76b0035f6d53d0!2sCan%20Tho%20University!5e0!3m2!1sen!2sbd!4v1639207982768!5m2!1sen!2sbd"
+                width="300" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+            </iframe>
+            <div class="icon">
+                <i class="fa fa-map-marker"></i>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <footer class="">
+    <div class="footer-section">
+      <div class="footer-comments container d-md-flex justify-content-center pt-3">
+        <div class="footer-group p-3 col-md-4">
+          <img class="footer-image rounded-circle" src="./assets/images/footer/chat_luong.jpg" alt="">
+          <h4 class="text-uppercase mt-3">chất lượng dẫn đầu</h4>
+          <p>Chú trọng khâu tuyển chọn đội ngũ đầu bếp chuyên nghiệp, thực đơn của Pizza Express luôn được đổi mới, đa
+            dạng với pizza nhiều hương vị, sandwich, mỳ ý và các món ăn nhanh khác.</p>
+        </div>
+        <div class="footer-group p-3 col-md-4">
+          <img class="footer-image rounded-circle" src="./assets/images/footer/giao_hang.jpg" alt="">
+          <h4 class="text-uppercase mt-3">giao hàng đúng giờ</h4>
+          <p>Để tăng cường sự tin tưởng và yên tâm với khách hàng, Pizza Express cam kết luôn giao hàng đúng giờ và chi
+            phí giao hàng rẻ nhất để đảm bảo khách hàng có thể nhận bánh trong thời gian nhanh nhất.</p>
+        </div>
+        <div class="footer-group p-3 col-md-4">
+          <img class="footer-image rounded-circle" src="./assets/images/footer/phuc_vu.png" alt="">
+          <h4 class="text-uppercase mt-3">phục vụ chuyên nghiệp</h4>
+          <p>Pizza Express cùng với đội ngũ nhân viên mang đầy sức trẻ và nhiệt huyết, chúng tôi luôn mong muốn đem lại
+            cho khách hàng của mình chất lượng dịch vụ tốt nhất, luôn lắng nghe và chăm sóc những nhu cầu dù là nhỏ nhất
+            của Quý khách.</p>
+        </div>
+      </div>
+      <div class="footer-contact p-1 d-md-flex">
+        <div class="footer-address col-md-6">
+          <strong class="text-color title">Cửa hàng JSPizza</strong>
+          <ul class="m-0 p-0">
+            <li class="d-flex py-1">
+              <i class="fa-solid fa-location-dot col-2"></i>
+              <p class="d-inline-block my-0 text-color">Đường 3/2, phường Xuân Khánh, quận Ninh Kiều, Thành phố Cần Thơ
+              </p>
+            </li>
+            <li class="d-flex py-1">
+              <i class="fa-solid fa-phone col-2"></i>
+              <p class="d-inline-block my-0 text-color">012345678</p>
+            </li>
+            <li class="d-flex py-1">
+              <i class="fa-solid fa-envelope col-2"></i>
+              <p class="d-inline-block my-0 text-color">email@gmail.com</p>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-social-networking col-md-6">
+          <strong class="text-color title">Liên hệ với chúng tôi tại:</strong>
+          <ul class="d-flex justify-content-center m-0 pt-3">
+            <li class="col-1">
+              <a href="#"><i class="fa-brands fa-facebook" style="color: #0036b3;"></i></a>
+            </li>
+            <li class="col-1"></li>
+            <li class="col-1">
+              <a href="#"><i class="fa-brands fa-square-instagram" style="color: #da8001;"></i></a>
+            </li>
+            <li class="col-1"></li>
+            <li class="col-1">
+              <a href="#"><i class="fa-brands fa-twitter" style="color: #edeef2;"></i></a>
+            </li>
+            <li class="col-1"></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copy-right">
+        <p class="text-color">Copyright &copy; 2023 Bản quyền thuộc về <a class="text-decoration-none text-dark"
+            href="#">Cửa hàng JSPizza</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modals"></div>
+
+  <script src="./assets/js/modals.js"></script>
+  <script type="module" src="./assets/js/handler_event.js"></script>
+  <script type="module" src="./assets/js/search_product.js"></script>
+</body>
+</html>

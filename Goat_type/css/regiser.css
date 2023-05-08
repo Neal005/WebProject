@@ -1,0 +1,207 @@
+*,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300;400;500;600;700&display=swap");
+* {
+    font-family: "Roboto Mono", monospace;
+}
+body{
+    background-color: rgba(50,52,55);
+}
+#logo{
+    width: 120px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.background{
+    width: 430px;
+    height: 520px;
+    position: fixed;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+}
+.background .shape{
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+}
+.shape:first-child{
+    border-radius: 50%;
+    left: -125px;
+    top: -190px;
+    animation: spin_1 5s linear infinite;
+}
+.shape:last-child{
+    border-radius: 50%;
+    right: -125px;
+    bottom: -190px;
+    animation: spin_2 5s linear infinite;
+}
+@keyframes spin_1 {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+@keyframes spin_2 {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+  }
+form{
+    margin: auto;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 35px 35px;
+}
+form *{
+    font-family: 'Poppins',sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+form h3{
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+}
+label{
+    display: block;
+    color: rgb(209, 208, 197);
+    margin-top: 25px;
+    font-size: 20px;
+    font-weight: 500;
+}
+input.sign_up{
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 2px;
+    margin-top: 2px;
+    font-size: 14px;
+    font-weight: 300;
+}
+::placeholder{
+    color: #e5e5e5;
+}
+button{
+    margin-top: 25px;
+    width: 100%;
+    background-color: #ffffff;
+    color: #080710;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.sign_up{
+    margin-top: 10px;
+}
+.social{
+margin-top: 30px;
+display: flex;
+}
+.social div{
+background: red;
+width: 150px;
+border-radius: 10px;
+padding: 10px 10px 10px 10px;
+background-color: rgba(255,255,255,0.27);
+color: #eaf0fb;
+text-align: center;
+}
+.remember{
+    padding-top: 10px;
+    font-size: 13px;
+    position:static;
+}
+.remember a{
+    font-size: 12px;
+    position: absolute;
+    right: 10%;
+}
+.material-symbols-outlined{
+    position: absolute;
+    left: 85%;
+    top: 35.25%;
+}
+.password i{
+    position: absolute;
+    left: 85%;
+    top: 52.75%;
+}
+.repassword i{
+    position: absolute;
+    left: 85%;
+    top: 70%;
+}
+.gender{
+    font-size: 15px;
+}
+.gender label{
+    font-size: 15px;
+}
+div#login{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+.rule{
+    margin-left: 10px;
+    font-size: small;
+    display: inline;
+}
+#nam{
+    font-size: small;
+    display: inline;
+}
+#nu{
+    font-size: small;
+    display: inline;
+}
+
+@media only screen and (max-width: 980px) {
+    form{
+        margin: auto;
+        width: 90%;
+        padding: 5px 5px;
+    }
+    .material-symbols-outlined{
+        position: absolute;
+        left: 90%;
+        top: 33.5%;
+    }
+    .password i{
+        position: absolute;
+        left: 90%;
+        top: 53%;
+    }
+    .repassword i{
+        position: absolute;
+        left: 90%;
+        top: 72%;
+    }
+    .shape:first-child{
+        left: -70px;
+        top: -160px;
+    }
+    .shape:last-child{
+        right: -70px;
+        bottom: -160px;
+    }
+}

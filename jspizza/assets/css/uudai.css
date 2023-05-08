@@ -1,0 +1,20 @@
+html{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+h2{
+    text-align: center;
+}
+h3{font-weight: bold;}
+img{
+    width:70%;
+}
+.container-sub{margin-top: 30px;}
+.mega-week-img-div{
+    text-align: center;
+}
+.mega-week-img{
+    width:80%;
+    border: 1px solid red;
+}

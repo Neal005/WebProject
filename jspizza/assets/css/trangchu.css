@@ -1,0 +1,17 @@
+
+.carousel-item > img{
+    border-radius: 20px;
+}
+
+.underline{
+    position: relative;
+    width: 90%;
+    height: 1px;
+    content: none;
+    background-color: black;
+}
+#box3 img{
+    position: relative;
+    height: 400px;
+
+}

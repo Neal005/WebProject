@@ -1,0 +1,62 @@
+.wrapper-container {
+    background-color: bisque;
+}
+.account-name {
+    padding: 8px 0;
+}
+.account-name strong {
+    font-size: 24px;
+}
+.container-options p {
+    margin: 0;
+}
+.list-options .list-item {
+    padding: 8px 0;
+}
+.list-options .list-item:hover {
+    background-color: darkgrey;
+    cursor: pointer;
+}
+.list-item i {
+    text-align: center;
+    font-size: 24px;
+}
+.container-user {
+    background-color: aliceblue;
+}
+.container-user .title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 500;
+}
+.decsription {
+    font-size: 20px;
+}
+.info li {
+    list-style-type: none;
+}
+
+/* form update info user */
+.form-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 450;
+}
+.alert-submit-form {
+    text-align: center;
+    animation: hiddenContent 2s ease-in-out;
+}
+@keyframes hiddenContent {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+/* responsive */
+@media only screen and (max-width: 992px) {
+    .container-options {
+        display: none;
+    }
+}

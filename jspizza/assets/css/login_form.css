@@ -1,0 +1,268 @@
+/* modal register */
+.modal-register {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    align-items: center;
+    justify-content: center;
+    display: none;
+    z-index: 100;
+}
+.register-container {
+    width: 65%;
+    background-color: white;
+    position: relative;
+    padding: 20px 40px;
+    background-image: url(/assets/images/trangchu/BG.jpg);
+}
+.close-button {
+    padding: 0 15px;
+    font-size: 40px;
+    color: white;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--main-background-color);
+}
+.close-button:hover {
+    cursor: pointer;
+}
+.close-button:active {
+    opacity: 0.8;
+}
+.login-title {
+    text-align: center;
+}
+.form-group-left, .form-group-right {
+    /* width: 50%; */
+    padding: 0 10px;
+}
+.form-group {
+    padding: 6px 0;
+}
+.form-group-1 {
+    padding: 6px 0;
+}
+.form-item-input {
+    width: 100%;
+    height: 36px;
+    border: 5px solid var(--main-background-color);
+}
+.form-item-input:hover {
+    border-width: 2px;
+    box-shadow: 0 0 3px 0 green;
+}
+.gender .form-item-input:hover {
+    box-shadow: 0 0 3px 0 white;
+}
+.form-item-input .gender-radio {
+    width: calc(30%);
+    display: flex;
+    justify-content: center;
+}
+.constraint-content {
+    padding: 10px;
+}
+.constraint-content .context {
+    display: inline-block;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-left: 8px;
+}
+.constraint-content #checkbox {
+    width: 20px;
+    height: 20px;
+}
+.constraint-content #checkbox:checked {
+    accent-color: var(--main-background-color);
+}
+.gender-radio > input {
+    align-items: center;
+    width: 20px;
+}
+.gender-radio > input:checked {
+    accent-color: var(--main-background-color);
+}
+.gender-radio > input:hover {
+    cursor: pointer;
+}
+.gender-radio > p {
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-left: 4px;
+}
+.button-submit button {
+    margin: 0;
+    padding: 8px 65px;
+    background-color: var(--main-background-color);
+    font-size: 24px;
+    color: white;
+}
+.form-info, .form-constraint, .form-submit {
+    padding: 10px 0;
+}
+.content-input {
+    padding: 0 8px;
+}
+.birthday-gender .birthday {
+    margin-right: 4px;
+}
+.birthday-gender .gender {
+    margin-left: 4px;
+}
+.icon-warning {
+    color: #ffc107;
+}
+.cell-form-password {
+    position: relative;
+}
+.show-password {
+    display: none;
+}
+.show-password, .hidden-password {
+    position: absolute;
+    right: 8px;
+    top: 39px;
+}
+.show-password:hover, .hidden-password:hover {
+    cursor: pointer;
+}
+
+/* handler error form */
+.form-error .error-message {
+    color: red;
+}
+.form-error .form-item-input {
+    border: 1px solid red;
+}
+/* modal register successfull */
+.modal-register-successfull, .modal-register-failed, .modal-login-successfull, .modal-login-failed {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+}
+.modal-register-successfull .alert, .modal-register-failed .alert, .modal-login-successfull .alert, .modal-login-failed .alert {
+    width: 50%;
+    color: white;
+    background-color: var(--main-background-color);
+    font-size: 88px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    animation: goDown 0.5s linear;
+}
+.modal-register-failed .alert {
+    width: 40%;
+}
+.alert a {
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+    margin-top: 8px;
+}
+.link-login {
+    font-size: 16px;
+}
+@keyframes goDown {
+    from {
+        opacity: 0;
+        transform: translateY(-193%);
+        background-color: white;
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0%);
+        background-color: var(--main-background-color);
+    }
+}
+
+/* modal login */
+.modal-login {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+.login-container {
+    width: 55%;
+    background-color: white;
+    position: relative;
+    padding: 20px 40px;
+    background-image: url(/assets/images/trangchu/BG.jpg);
+}
+.hint-register {
+    text-align: justify;
+}
+.hint-register .link-register {
+    color: var(--main-background-color);
+}
+.hint-register .link-register:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+.hint-register .link-register:active {
+    opacity: 0.6;
+}
+.link-register-from-login {
+    font-size: 16px;
+}
+.return-main-page:hover,
+.link-register-from-login:hover {
+    cursor: pointer;
+    color: blue;
+}
+.return-main-page {
+
+}
+/* open form */
+.open {
+    display: flex;
+}
+.close {
+    display: none;
+}
+.account-login {
+    color: blue;
+    display: none;
+}
+.account-login i {
+    font-size: 28px;
+}
+.account-login p {
+    margin: 0 4px 0;
+}
+.show-user {
+    display: block;
+}
+/* responsive */
+@media only screen and (max-width: 1023px) and (min-width: 576px) {
+    .login-container {
+        width: 80%;
+    }
+    .register-container {
+        width: 80%;
+    }
+}
+@media only screen and (max-width: 575px) {
+    .login-container, .register-container {
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}

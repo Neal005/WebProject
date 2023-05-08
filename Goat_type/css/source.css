@@ -1,0 +1,97 @@
+body {
+  background-color: var(--bg-color);
+  padding: 32px;
+}
+#container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+#header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+#logo {
+  height: 50px;
+}
+#account {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  flex: 1;
+}
+#account span {
+  margin-right: 24px;
+}
+#avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+#footer {
+  width: 100%;
+  margin-top: 12px;
+}
+#left {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+.left-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 24px;
+}
+.left-item i {
+  color: var(--sub-color);
+  margin: 8px;
+}
+.left-item span {
+  color: var(--sub-color);
+}
+#liveAlertPlaceholder {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 100px;
+  height: 100px;
+}
+.line-clamp {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 10; /* Change this line if you want. In this case it trimmed the text to 3 lines. */
+  overflow: hidden;
+}
+.modal-content {
+  color: initial;
+  background: #fff initial;
+}
+
+/* error */
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.fof h1 {
+  font-size: 50px;
+  display: inline-block;
+  padding-right: 12px;
+  animation: type 0.5s alternate infinite;
+}
+
+@keyframes type {
+  from {
+    box-shadow: inset -3px 0px 0px #888;
+  }
+  to {
+    box-shadow: inset -3px 0px 0px transparent;
+  }
+}

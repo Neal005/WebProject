@@ -1,0 +1,94 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/global.css" />
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="./bootstrap/js/bootstrap.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="./css/source.css" />
+    <title>SOURCE</title>
+</head>
+
+<body>
+    <div class="container w-100 mw-100" id="container">
+        <header id="header">
+            <a href="./index.html"><img src="./images/logo_name_v1.png" alt="logo" id="logo" /></a>
+            <div id="account">
+                <span>Full Dev</span>
+                <img src="./images/avatar.webp" alt="avatar" id="avatar" />
+            </div>
+        </header>
+        <div class="container">
+            <nav class="navbar navbar-expand-sm bg-body-tertiary">
+                <div class="container-fluid">
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Ngôn ngữ
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><button class="dropdown-item language" href="#" data-lang="vi">Tiếng Việt</button></li>
+                            <li><button class="dropdown-item language" href="#" data-lang="en">Tiếng Anh</button></li>
+                        </ul>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+                        aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar">
+                        <form class="d-flex" role="search">
+                            <form class="d-flex mx-3" role="search">
+                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                                    name="title" id="search">
+                                <button class="btn btn-outline-primary" type="submit">Search</button>
+                            </form>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+            <div class="container">
+                <div class="source row">
+                </div>
+                <nav aria-label="navigation" class="my-2">
+                    <ul class="pagination justify-content-center" id="pagination">
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <footer id="footer">
+            <div class="left-part flex-row" id="left">
+                <div class="left-contact left-item">
+                    <i class="fa-solid fa-envelope fa-beat"></i>
+                    <span>Liên hệ</span>
+                </div>
+                <div class="left-github left-item">
+                    <i class="fa-brands fa-github fa-beat"></i>
+                    <span>GibHub</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modal" style="color: #000 !important;"></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="color: #000 !important;">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./js/source.js" type="module"></script>
+
+</html>

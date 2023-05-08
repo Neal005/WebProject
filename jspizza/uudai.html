@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ƯU ĐÃI KHỦNG</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="./assets/css/chuongtrinh.css" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/login_form.css">
+    
+    <link rel="stylesheet" href="./assets/fontawesome-free-5.12.1-web/css/all.css" />
+
+    <link rel="stylesheet" href="./assets/css/uudai.css" />
+    <link rel="shortcut icon" href="./assets/images/logo3.jpg" type="image/vnd.microsoft.icon" />
+</head>
+
+<body>
+  <header>
+    <div class="container header-wrapper d-flex pt-2 pb-1">
+      <div id="logo-section" class="col-2">
+        <div class="wrapper-logo d-grid">
+          <div><a href="index.html"><img class="logo-image rounded-circle" src="./assets/images/logo3.jpg" alt=""></a>
+          </div>
+          <div><a href="index.html">
+            <h2 class="logo-name text-uppercase text-color" style="letter-spacing: 1.5px; color: tomato;">jspizza</h2>
+          </a>
+        </div> 
+        </div>
+      </div>
+      <div id="nav-search-section" class="col-9 d-grid">
+        <div class="search-section row align-items-center justify-content-end m-0">
+          <div class="bar-search col-9 rounded-2">
+            <div class="bar-but-search d-flex row">
+              <input id="input-search" class="col-11 input-search border-0" type="text" placeholder="Nhập sản phẩm tìm kiếm ở đây">
+              <ul class="list-products-hint p-0"></ul>
+              <div class="col-1 button-search"><i class="fas fa-search py-2 text-color"></i></div>
+            </div>
+          </div>
+
+          <div class="col-2 button-search-mobile text-center p-0"><i class="fas fa-search py-2 text-color"></i></div>
+
+          <div class="account-section col-3" >
+            <div class="login d-flex m-0 justify-content-end">
+              <i style="position: relative; top: 5px;right: 3px; color: white;" class="fa-regular fa-user"></i>
+              <a class="text-color log-in px-1 text-decoration-none" href="#">Đăng nhập</a>
+              <div class="tag-partition"></div>
+              <a class="text-color register text-decoration-none px-1" href="#">Đăng ký</a>
+            </div>
+          </div>
+
+          <div class="account-login col-3">
+            <div class="info-user-login d-flex m-0 justify-content-center align-items-center">
+              <div class="logo-name-user d-flex p-1 rounded-2">
+                <i class="fa-solid fa-circle-user logo-user"></i>
+                <p class="d-inline-block"></p>
+                <div class="show-option rounded-2">
+                  <ul class="py-2 ps-0 m-0 d-grid">
+                    <li class="py-2 move-page-user">
+                      <div class="ps-3">Thông tin tài khoản</div>
+                    </li>
+                    <li class="py-2 sign-out">
+                      <div class="ps-3">Đăng xuất</div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div> 
+          <!-- Modal sign out -->
+          <div class="modal-sign-out justify-content-center align-items-center">
+            <div class="content p-3 rounded-2">
+              <div class="header d-flex justify-content-end">
+                <button type="button" class="btn-close"></button>
+              </div>
+              <div class="body d-flex justify-content-center align-items-center px-2 text-success">
+                <i class="fa-regular fa-circle-check"></i>
+                <p class="m-0 px-2">Đăng xuất thành công</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="nav-section pt-2">
+          <ul class="menu-nav d-flex m-0 p-0 align-items-center text-uppercase text-center">
+            <li class="col-3"><a class="text-color trangchu"  href="index.html">trang chủ</a></li>
+            <li class="col-3"><a class="text-color sanpham" href="sanpham.html">sản phẩm</a></li>
+            <li class="col-3"><a class="text-color chuongtrinh" href="chuongtrinh.html">chương trình</a></li>
+            <li class="col-3"><a class="text-color lienhe" href="lienhe.html">liên hệ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="cart-section" class="col-1">
+        <div class="d-flex justify-content-center wrapper-shopping-button"><a href="cart.html"><i class="fas fa-shopping-cart shopping-button text-color"></i></a></div>
+      </div>
+
+      <div id="nav-mobile" class="col-1">
+        <div class="d-flex justify-content-center wrapper-shopping-button"><i class="fa-solid fa-bars text-color bar-button"></i></div>
+      </div>
+
+      <div class="nav-overlay">
+        <div class="menu-mobile px-3 py-5">
+          <div class="mobile-account py-3">
+            <div class="login d-flex m-0 row align-items-center">
+              <i class="fa-solid fa-right-to-bracket col-2"></i>
+              <div class="col-10">
+                <a class="mobile-login text-decoration-none" href="#">Đăng nhập | </a>
+                <a class="mobile-register text-decoration-none px-1" href="#">Đăng ký</a>
+              </div>
+            </div>
+          </div>
+          <div class="mobile-log-in py-3">
+            <div class="info-user-login d-flex m-0 justify-content-center ">
+              <div class="logo-name-user d-flex p-1 rounded-2 align-items-center">
+                <i class="fa-solid fa-circle-user logo-user"></i>
+                <p class="d-inline-block m-0 px-1"></p>
+              </div>
+            </div>
+          </div> 
+          <div class="mobile-personal py-3">
+            <a class="row d-flex justify-content-center align-items-center text-decoration-none py-2" href="nguoidung.html">
+              <i class="fa-solid fa-user col-2 text-center"></i>
+              <p class="col-10 m-0">Thông tin tài khoản</p>
+            </a>
+            <a class="row d-flex justify-content-center align-items-center text-decoration-none py-2" href="cart.html">
+              <i class="fas fa-shopping-cart col-2 text-center"></i>
+              <p class="col-10 m-0">Giỏ hàng của tôi</p>
+            </a>
+          </div>
+          <div class="mobile-nav py-3">
+            <a class="row d-flex justify-content-center align-items-center text-decoration-none py-2" href="index.html">
+              <i class="fa-solid fa-house col-2 text-center"></i>
+              <p class="col-10 m-0">Trang chủ</p>
+            </a>
+            <a class="row d-flex justify-content-center align-items-center text-decoration-none py-2" href="sanpham.html">
+              <i class="fa-solid fa-puzzle-piece col-2 text-center"></i>
+              <p class="col-10 m-0">Sản phẩm</p>
+            </a>
+            <a class="row d-flex justify-content-center align-items-center text-decoration-none py-2" href="chuongtrinh.html">
+              <i class="fa-solid fa-scale-unbalanced-flip col-2 text-center"></i>
+              <p class="col-10 m-0">Chương trình</p>
+            </a>
+            <a class="row d-flex justify-content-center align-items-center text-decoration-none py-2" href="lienhe.html">
+              <i class="fa-solid fa-file-signature col-2 text-center"></i>
+              <p class="col-10 m-0">Liên hệ</p>
+            </a>
+          </div>
+          <div class="mobile-logout py-3">
+            <div class="row d-flex justify-content-center align-items-center text-decoration-none py-2">
+              <i class="fa-solid fa-right-from-bracket col-2 text-center"></i>
+              <p class="col-10 m-0">Đăng xuất</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay">
+      <input class="w-100 px-3 py-2 rounded-5 input-search-mobile" type="text" placeholder="Nhập sản phẩm tìm kiếm ở đây">
+    </div>
+  </header>
+    <main>
+        <div class="container">
+            <div class="container-sub">
+                <div class="content-detail">
+                    <div class="mega-week-img-div">
+                        <img class="mega-week-img1 mega-week-img" src="./assets/images/khuyenmai/megaweek.jpg " />
+                    </div>
+                    <div id="detail-date"></div>
+                    <h1 class="title-detail">
+                        ƯU ĐÃI CỰC HOÀNH TRÁNG NĂM 2023: Pizza JS GIẢM 50% TỔNG HÓA ĐƠN
+                    </h1>
+                    <div class="description-detail" id="description-detail-el">
+                        <h2 style="text-align: center">
+                            <strong>Mega Week - Tuần Deal Nửa Giá không thể bỏ lỡ</strong>
+                        </h2>
+                        <p>
+                            <span>Mega Week - Tuần lễ pizza bùng nổ tặng bạn hot deal </span><strong>GIẢM 50% tổng hóa
+                                đơn</strong><span>
+                                khi mua từ 2 pizza size M/L, món phụ và thức uống. Chương
+                                trình áp dụng chỉ trong </span><strong>1 tuần duy nhất</strong><span>, từ ngày
+                                03/04/2023 đến ngày 09/04/2023 tại tất cả cửa hàng
+                                JS Pizza trên toàn quốc (trừ cửa hàng sân bay).
+                        </p>
+                        <p>
+                            <span>Ưu đãi áp dụng khi mua tại cửa hàng, mua mang về và đặt hàng
+                                online nhé bạn ơi!
+                        </p>
+                        <p>
+                            <strong>*Lưu ý:</strong>
+                        </p>
+                        <p>
+                            <span>Chương trình không áp dụng với các sản phẩm: Viền xúc xích,
+                                Viền xúc xích phô mai, Thêm phô mai, Gà không xương BBQ, Cánh
+                                gà 6 miếng, Ham &amp; Mushroom Pasta, Choco Lava.</span>
+                        </p>
+                        <br>
+                        <div class="mega-week-img-div">
+                            <img class="mega-week-img2 mega-week-img"
+                                src="./assets/images/khuyenmai/megaweek.jpg" />
+                        </div>
+                        <p style="text-align: center">
+                            <em>Chương trình Mega Week ưu đãi giảm 50% tổng hóa đơn siêu
+                                hot.</em>
+                        </p>
+                        <br>
+                        <h2>
+                            <strong>TOP những món pizza best-seller nhất định phải thử tại JS
+                                Pizza</strong>
+                        </h2>
+                        <br>
+                        <h3><strong style="color: rgb(17, 85, 204)">Pizza
+                                Bò Beefsteak Phô Mai Kiểu New York</strong></a><strong> - New York
+                                CheeseSteak</strong>
+                        </h3>
+                        <p>
+                            New York CheeseSteak là sản phẩm đầu tiên trong bộ sưu tập
+                            “Hương vị Thế giới - Flavors Of The World” đầy mới lạ của JS
+                            Pizza. Trong bộ sưu tập này, JS sẽ lần lượt trình làng nhiều
+                            loại pizza mới mang đặc trưng ẩm thực ở nhiều quốc gia trên
+                            thế giới trong năm nay. Đừng quên theo dõi JS Pizza để cập
+                            nhật những sản phẩm mới nhất!
+                        </p>
+                        <p>
+                            Pizza New York CheeseSteak mang đậm hương vị từ thành phố New
+                            York náo nhiệt với các thành phần hảo hạng
+                            như bò beefsteak, nấm, cà chua, hành tây,
+                            bột rong biển kết hợp xốt Demi-Glace (xốt bít tết), xốt kem
+                            chua cùng sự béo bùi khó cưỡng của phô mai
+                            Mozzarella.
+                        </p>
+                        <br>
+                        <p style="text-align: center">
+                            <img src="./assets/images/khuyenmai/pizzabo.jpg" alt="">
+                        </p>
+                        <p style="text-align: center">
+                            <em>Pizza Bò Beefsteak Phô Mai Kiểu New York - New York
+                                CheeseSteak cho hương vị mới lạ khó quên.</em><span>
+                        </p>
+                        <p style="text-align: center"><br /></p>
+                        <h3><strong style="color: rgb(17, 85, 204)">Pizza Hải Sản Xốt
+                                Mayonnaise</strong></a><strong> - Ocean Mania</strong>
+                        </h3>
+                        <p>
+                            Pizza Ocean Mania chiêu đãi bạn bữa tiệc hải sản tươi ngon
+                            với tôm, mực, thanh cua kết hợp cùng hành tây, xốt Mayonnaise
+                            béo mặn và phô mai Mozzarella thơm béo siêu hấp dẫn. Nếu là
+                            một “fan cứng” của hải sản, Pizza Hải Sản Xốt Mayonnaise -
+                            Ocean Mania là sự lựa chọn không thể hoàn hảo hơn cho
+                            bạn.
+                        </p>
+                        <br>
+                        <p style="text-align: center">
+                            <img src="./assets/images/khuyenmai/pizzahaisan.jpg" alt="">
+                        </p>
+                        <p style="text-align: center">
+                            <em>Thưởng thức bữa tiệc hải sản với Pizza Hải Sản Xốt Mayonnaise
+                                - Ocean Mania.</em>
+                        </p>
+                        <br>
+                        <h3><strong style="color: rgb(17, 85, 204)">Pizza
+                                Gà Phô Mai Thịt Heo Xông Khói</strong></a><strong> - Cheesy Chicken Bacon</strong>
+                        </h3>
+                        <p>
+                            Pizza Cheesy Chicken Bacon ghi điểm với những lát thịt gà mềm
+                            đậm vị hòa quyện cùng thịt heo xông khói, kết hợp với cà chua,
+                            xốt phô mai và phô mai Mozzarella cho vị ngon hấp dẫn, ăn là
+                            ghiền.
+                        </p>
+                        <br>
+                        <p style="text-align: center">
+                            <img src="./assets/images/khuyenmai/pizzaga.jpg" alt="">
+                        </p>
+                        <p style="text-align: center">
+                            <em>Pizza Gà Phô Mai Thịt Heo Xông Khói - Cheesy Chicken Bacon
+                                mang đến hương vị đậm đà khó cưỡng.</em>
+                        </p>
+                        <br>
+                        <h3>
+                            <strong style="color: rgb(17, 85, 204)">Pizza Xúc Xích Ý Truyền
+                                Thống</strong></a><strong> - Pepperoni Feast</strong>
+                        </h3>
+                        <p>
+                            Pizza Xúc Xích Ý Truyền Thống - Pepperoni Feast mang đến
+                            hương vị đặc biệt khó quên, đó là xúc xích Pepperoni đậm đà,
+                            hơi cay nhẹ cực lạ miệng kết hợp cùng xốt cà chua và phô mai
+                            Mozzarella thơm béo.
+                        </p>
+                        <br>
+                        <p style="text-align: center">
+                            <img src="./assets/images/khuyenmai/pizzaphomai.jpg" alt="">
+                        </p>
+                        <p style="text-align: center">
+                            <em>Thơm ngon trọn vị cùng Pizza Xúc Xích Ý Truyền Thống -
+                                Pepperoni Feast.</em>
+                        </p>
+                        <p style="text-align: center"><br /></p>
+                        <h3>
+                            <strong style="color: rgb(17, 85, 204)">Pizza Thập Cẩm Thượng
+                                Hạng</strong></a><strong> - Extravaganza</strong>
+                        </h3>
+                        <p>
+                            Pizza Thập Cẩm Thượng Hạng - Extravaganza với đa dạng topping
+                            trên nền xốt cà chua đặc trưng như xúc xích Pepperoni, thịt
+                            heo xông khói, thịt bò viên, ớt chuông xanh, nấm mỡ, hành tây,
+                            ô-liu và phô mai Mozzarella mang đến vị ngon đậm đà, ăn là mê
+                            ngay.
+                        </p>
+                        <br>
+                        <p style="text-align: center">
+                            <img src="./assets/images/khuyenmai/pizzathapcam.jpg" alt="">
+                        </p>
+                        <p style="text-align: center">
+                            <em>Pizza Thập Cẩm Thượng Hạng - Extravaganza thơm ngon, không
+                                thể bỏ qua trong mùa Mega Week này. </em><span>
+                        </p>
+                        <p style="text-align: center"><br /></p>
+                        <p>
+                            Ngoài pizza, JS còn có
+                            các món phụ
+                            hấp dẫn không kém
+                            như bánh sừng bò nhân bò Beefsteak phô mai, gà viên phô mai
+                            đút lò, xúc xích xông khói đút lò, bánh cuộn quế xốt sữa
+                            đặc/xốt sô-cô-la/xốt kem sữa, chocochips, bánh mì nướng phô
+                            mai, bánh mì nướng bơ tỏi, mỳ Ý hải sản đút lò, mỳ Ý bò bằm
+                            đút lò. Đặc biệt, khi mua viền phô mai cho pizza size M/L, bạn
+                            cũng sẽ nhận được ưu đãi giảm 50% nữa đấy.&nbsp;
+                        </p>
+                        <p>
+                            Còn chần chừ gì nữa, deal xịn đã sẵn sàng, hãy đến ngay cửa
+                                hàng JS Pizza để thưởng thức pizza. Hoặc đặt bánh qua </span><strong>hotline 1900
+                                7077</strong><span> hay </span><a
+                                href="index.html" 
+                                target="_blank" style="color: rgb(17, 85, 204); font-weight: bold;">website</a><span>
+                                để được giao bánh tận nhà miễn phí chỉ trong 30 phút bạn
+                                nhé!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="">
+      <div class="footer-section">
+        <div class="footer-comments container d-md-flex justify-content-center pt-3">
+          <div class="footer-group p-3 col-md-4">
+            <img class="footer-image rounded-circle" src="./assets/images/footer/chat_luong.jpg" alt="">
+            <h4 class="text-uppercase mt-3">chất lượng dẫn đầu</h4>
+            <p>Chú trọng khâu tuyển chọn đội ngũ đầu bếp chuyên nghiệp, thực đơn của Pizza Express luôn được đổi mới, đa
+              dạng với pizza nhiều hương vị, sandwich, mỳ ý và các món ăn nhanh khác.</p>
+          </div>
+          <div class="footer-group p-3 col-md-4">
+            <img class="footer-image rounded-circle" src="./assets/images/footer/giao_hang.jpg" alt="">
+            <h4 class="text-uppercase mt-3">giao hàng đúng giờ</h4>
+            <p>Để tăng cường sự tin tưởng và yên tâm với khách hàng, Pizza Express cam kết luôn giao hàng đúng giờ và chi
+              phí giao hàng rẻ nhất để đảm bảo khách hàng có thể nhận bánh trong thời gian nhanh nhất.</p>
+          </div>
+          <div class="footer-group p-3 col-md-4">
+            <img class="footer-image rounded-circle" src="./assets/images/footer/phuc_vu.png" alt="">
+            <h4 class="text-uppercase mt-3">phục vụ chuyên nghiệp</h4>
+            <p>Pizza Express cùng với đội ngũ nhân viên mang đầy sức trẻ và nhiệt huyết, chúng tôi luôn mong muốn đem lại
+              cho khách hàng của mình chất lượng dịch vụ tốt nhất, luôn lắng nghe và chăm sóc những nhu cầu dù là nhỏ nhất
+              của Quý khách.</p>
+          </div>
+        </div>
+        <div class="footer-contact p-1 d-md-flex">
+          <div class="footer-address col-md-6">
+            <strong class="text-color title">Cửa hàng JSPizza</strong>
+            <ul class="m-0 p-0">
+              <li class="d-flex py-1">
+                <i class="fa-solid fa-location-dot col-2"></i>
+                <p class="d-inline-block my-0 text-color">Đường 3/2, phường Xuân Khánh, quận Ninh Kiều, Thành phố Cần Thơ
+                </p>
+              </li>
+              <li class="d-flex py-1">
+                <i class="fa-solid fa-phone col-2"></i>
+                <p class="d-inline-block my-0 text-color">012345678</p>
+              </li>
+              <li class="d-flex py-1">
+                <i class="fa-solid fa-envelope col-2"></i>
+                <p class="d-inline-block my-0 text-color">email@gmail.com</p>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-social-networking col-md-6">
+            <strong class="text-color title">Liên hệ với chúng tôi tại:</strong>
+            <ul class="d-flex justify-content-center m-0 pt-3">
+              <li class="col-1">
+                <a href="#"><i class="fa-brands fa-facebook" style="color: #0036b3;"></i></a>
+              </li>
+              <li class="col-1"></li>
+              <li class="col-1">
+                <a href="#"><i class="fa-brands fa-square-instagram" style="color: #da8001;"></i></a>
+              </li>
+              <li class="col-1"></li>
+              <li class="col-1">
+                <a href="#"><i class="fa-brands fa-twitter" style="color: #edeef2;"></i></a>
+              </li>
+              <li class="col-1"></li>
+            </ul>
+          </div>
+        </div>
+        <div class="copy-right">
+          <p class="text-color">Copyright &copy; 2023 Bản quyền thuộc về <a class="text-decoration-none text-dark"
+              href="#">Cửa hàng JSPizza</a></p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="modals"></div>
+
+    <script src="./assets/js/modals.js"></script>
+    <script type="module" src="./assets/js/handler_event.js"></script>
+    <script type="module" src="./assets/js/search_product.js"></script>
+</body>
+<script>
+    const d = new Date();
+let text = d.toLocaleDateString();
+document.getElementById("detail-date").innerHTML = text;
+</script>
+
+</html>

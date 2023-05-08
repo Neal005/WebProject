@@ -1,0 +1,201 @@
+/* Google Font CDN Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+body{
+  min-height: 80vh;
+  width: 100%;
+  
+  background-repeat: repeat;
+  align-items: center;
+  justify-content: center;
+}
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(/assets/images/trangchu/BG.jpg) ;
+  padding: 7.5% 0;
+}
+
+.container1{
+  width: 85%;
+  height: 45%;
+  background: #f4eaea;
+  border-radius: 6px;
+  padding: 20px 60px 30px 40px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  /* margin-top: 10%; */
+}
+.container1 .content{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: -10px;
+  vertical-align: top;
+}
+.container1 .content .left-side{
+  width: 20%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  position: relative;
+}
+.content .left-side::before{
+  content: '';
+  position: absolute;
+  height: 70%;
+  width: 2px;
+  right: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #afafb6;
+}
+.content .left-side .details{
+  margin: 10px;
+  text-align: center;
+}
+.content .left-side .details i{
+  font-size: 30px;
+  color: #3e2093;
+  margin-bottom: 10px;
+}
+.content .left-side .details .topic{
+  font-size: 18px;
+  font-weight: 500;
+}
+.content .left-side .details .text-one,
+.content .left-side .details .text-two{
+  font-size: 14px;
+  color: #afafb6;
+}
+.container1 .content .right-side{
+  width: 40%;
+  margin-left: 70px;
+}
+.content .right-side .topic-text{
+  font-size: 23px;
+  font-weight: 600;
+  color: #3e2093;
+}
+.right-side .input-box{
+  height: 50px;
+  width: 100%;
+  margin: 12px 0;
+}
+.right-side .input-box input,
+.right-side .input-box textarea{
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background: #F0F1F8;
+  border-radius: 12px;
+  padding: 0 15px;
+  resize: none;
+  border: solid;
+  border-width: 1px;
+  border-color: #afafb6;
+}
+
+.right-side .message-box{
+  min-height: 110px;
+}
+.right-side .input-box textarea{
+  padding-top: 6px;
+}
+.right-side .button{
+  display: inline-block;
+  margin-top: 12px;
+}
+.right-side .button button[type="submit"]{
+  color: #fff;
+  font-size: 18px;
+  outline: none;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 10px;
+  background: #3e2093;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+.button button[type="submit"]:hover{
+  background: #5029bc;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.15s;
+}
+
+.map {
+    padding-top: 50px;
+    margin-left: 5%;
+    margin-bottom: 20px;
+    margin-right: -34px;
+}
+
+.map-inner {
+    height: 270px;
+    width: 250px;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 14px;
+    margin-right: 30px;
+}
+
+
+.map-inner iframe {
+    width: 100%;
+}
+
+.map-inner .icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-14px, -21px);
+    -ms-transform: translate(-14px, -21px);
+    transform: translate(-14px, -21px);
+}
+
+.map-inner .icon i {
+    font-size: 48px;
+    color: #e7ab3c;
+}
+
+
+@media (max-width: 950px) {
+  .container1{
+    width: 90%;
+    padding: 30px 40px 40px 35px ;
+  }
+  .container1 .content .right-side{
+   width: 75%;
+   margin-left: 55px;
+}
+}
+@media (max-width: 820px) {
+  .container1{
+    margin: 40px 0;
+    height: 100%;
+  }
+  .container1 .content{
+    flex-direction: column-reverse;
+  }
+ .container1 .content .left-side{
+   width: 100%;
+   flex-direction: row;
+   margin-top: 40px;
+   justify-content: center;
+   flex-wrap: wrap;
+ }
+ .container1 .content .left-side::before{
+   display: none;
+ }
+ .container1 .content .right-side{
+   width: 100%;
+   margin-left: 0;
+ }
+}
+
