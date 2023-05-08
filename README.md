@@ -1,2 +1,2 @@
 # Neal_project
-some mine project
+Some mine project
