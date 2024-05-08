@@ -4,3 +4,4 @@
 - [Rắn săn mồi](https://neal005.github.io/WebProject/static/Ran_san_moi/Ran_san_moi.html)
 - [Mine sweeper](https://neal005.github.io/WebProject/static/minesweeper/minesweeper.html)
 - [Jspizza](https://neal005.github.io/WebProject/static/jspizza/index.html)
+- [Birthday cake](https://neal005.github.io/WebProject/static/Birthday%20Cake/index.html)
