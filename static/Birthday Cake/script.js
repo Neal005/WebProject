@@ -19,6 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
   let microphone;
   let audio = new Audio('happy birthday.mp3');
 
+  addCandle(125, 15);
+
 
   function updateCandleCount() {
     const activeCandles = candles.filter(
@@ -43,6 +45,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   cake.addEventListener("click", function (event) {
+    if (!audio.paused) {
+      return;
+    }
+
     const rect = cake.getBoundingClientRect();
     const left = event.clientX - rect.left;
     const top = event.clientY - rect.top;
@@ -60,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     let average = sum / bufferLength;
 
-    return average > 50; //ETO CHANGEEEEEE
+    return average > 95; //ETO CHANGEEEEEE
   }
 
   function blowOutCandles() {
