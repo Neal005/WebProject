@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tính điểm GPA</title>
+
+    <link rel="icon" href="./assets/ctu.ico" type="image/x-icon" />
+
+    <style>
+      header img,
+      header h1 {
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      header {
+        background-color: rgba(59, 187, 230, 0.548);
+        margin-bottom: 20px;
+        padding: 10px;
+      }
+
+      #gpaCalculator {
+        width: 50%;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.5);
+        border: 1px solid #f0e7e7;
+        border-radius: 5px;
+      }
+
+      #gpaCalculator label {
+        display: block;
+        margin-bottom: 5px;
+        text-align: left;
+        font-weight: bold;
+      }
+      #gpaCalculator input[type="number"] {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+      }
+      #gpaCalculator button {
+        padding: 10px 20px;
+        margin-bottom: 10px;
+      }
+      #result {
+        margin-top: 10px;
+      }
+
+      body {
+        background-image: url("./assets/CTU_01.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+
+      footer {
+        text-align: center;
+        padding: 10px 0;
+        border-top: 1px solid #ddd;
+        margin-top: 200px;
+        width: 100%;
+        font-weight: bold;
+        background-color: rgba(255, 255, 255, 0.671);
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="./assets/CTU-Logo.png" alt="CTU Logo" width="50" height="50" />
+      <h1>CTU Score</h1>
+    </header>
+
+    <form id="gpaCalculator">
+      <label for="totalCredits">Tổng số tín chỉ ra trường:</label><br />
+      <input
+        type="number"
+        id="totalCredits"
+        name="totalCredits"
+        required
+      /><br /><br />
+
+      <label for="earnedCredits">Số tín chỉ đã tích lũy:</label><br />
+      <input
+        type="number"
+        id="earnedCredits"
+        name="earnedCredits"
+        required
+      /><br /><br />
+
+      <label for="currentGPA">Điểm trung bình (GPA) hiện tại:</label><br />
+      <input
+        type="number"
+        id="currentGPA"
+        name="currentGPA"
+        step="0.01"
+        required
+      /><br /><br />
+
+      <label for="desiredGPA">Điểm mong muốn khi ra trường:</label><br />
+      <input
+        type="number"
+        id="desiredGPA"
+        name="desiredGPA"
+        step="0.01"
+        required
+      /><br /><br />
+      <button type="submit">Tính toán</button>
+      <div id="result"></div>
+    </form>
+  </body>
+
+  <footer>
+    <p>Nguyễn Lê Hoàng Lực</p>
+    <p>B2110131</p>
+  </footer>
+
+  <script>
+    document
+      .getElementById("gpaCalculator")
+      .addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        calculateGPA();
+      });
+
+    function calculateGPA() {
+      const totalCredits = parseFloat(
+        document.getElementById("totalCredits").value
+      );
+      const earnedCredits = parseFloat(
+        document.getElementById("earnedCredits").value
+      );
+      const currentGPA = parseFloat(
+        document.getElementById("currentGPA").value
+      );
+      const desiredGPA = parseFloat(
+        document.getElementById("desiredGPA").value
+      );
+
+      const remainingCredits = totalCredits - earnedCredits;
+
+      if (remainingCredits <= 0) {
+        document.getElementById("result").innerHTML =
+          "Không còn tín chỉ nào cần tính. GPA hiện tại của bạn đáp ứng hoặc vượt mong đợi.";
+        return;
+      }
+
+      const requiredGPA =
+        (desiredGPA * totalCredits - currentGPA * earnedCredits) /
+        remainingCredits;
+
+      document.getElementById("result").innerHTML =
+        "GPA cần đạt trong các tín chỉ còn lại: " + requiredGPA.toFixed(10);
+    }
+  </script>
+</html>
