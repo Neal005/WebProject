@@ -14,6 +14,3 @@
   ```
 ### Database:
 ![database](./img/database.png)
-
-
-
