@@ -1,21 +1,30 @@
-name: Deploy static website to GitHub Pages
+name: Build & Commit AI Detector dist to main
 
 on:
   push:
     branches:
       - main
+    paths:
+      - 'static/ai-detector/src/**'
+      - 'static/ai-detector/index.dev.html'
+      - 'static/ai-detector/vite.config.ts'
+      - 'static/ai-detector/package.json'
+      - 'static/ai-detector/package-lock.json'
+      - '.github/workflows/deploy.yml'
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  build-and-deploy:
+  build-and-commit:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -28,13 +37,36 @@ jobs:
         run: npm ci
         working-directory: static/ai-detector
 
+      - name: Restore dev index.html for Vite build
+        run: cp static/ai-detector/index.dev.html static/ai-detector/index.html
+
       - name: Build Static Project
         run: npm run build
         working-directory: static/ai-detector
 
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: static/ai-detector/dist
-          branch: gh-pages
-          clean: true
+      - name: Restore redirect index.html for GitHub Pages
+        run: |
+          cat > static/ai-detector/index.html << 'EOF'
+          <!doctype html>
+          <html lang="en">
+            <head>
+              <meta charset="UTF-8" />
+              <meta http-equiv="refresh" content="0; url=./dist/index.html" />
+              <link rel="canonical" href="./dist/index.html" />
+              <title>AI Detector - Redirecting...</title>
+              <script>window.location.replace('./dist/index.html');</script>
+            </head>
+            <body>
+              <p>Redirecting... <a href="./dist/index.html">Click here if not redirected</a></p>
+            </body>
+          </html>
+          EOF
+
+      - name: Commit dist/ and redirect index.html back to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add static/ai-detector/dist/
+          git add static/ai-detector/index.html
+          git diff --cached --quiet || git commit -m "ci: rebuild ai-detector dist [skip ci]"
+          git push origin main
