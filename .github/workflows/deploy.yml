@@ -67,7 +67,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add static/ai-detector/dist/
+          git add -f static/ai-detector/dist/
           git add static/ai-detector/index.html
           git diff --cached --quiet || git commit -m "ci: rebuild ai-detector dist"
           git push origin main
