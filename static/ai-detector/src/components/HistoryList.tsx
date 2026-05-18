@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { History, Trash2, ShieldAlert, CheckCircle, Clock } from 'lucide-react';
+import { getMediaFile } from '../utils/db';
 
 export interface HistoryItem {
   id: string;
@@ -18,17 +19,130 @@ interface HistoryListProps {
   onSelectHistoryItem: (item: HistoryItem) => void;
 }
 
+const HistoryItemCard: React.FC<{
+  item: HistoryItem;
+  onSelect: (item: HistoryItem) => void;
+}> = ({ item, onSelect }) => {
+  const [mediaUrl, setMediaUrl] = useState<string>('');
+
+  useEffect(() => {
+    let active = true;
+    let url = '';
+
+    getMediaFile(item.id).then((file) => {
+      if (file && active) {
+        url = URL.createObjectURL(file);
+        setMediaUrl(url);
+      }
+    });
+
+    return () => {
+      active = false;
+      if (url) {
+        URL.revokeObjectURL(url);
+      }
+    };
+  }, [item.id]);
+
+  const sizeMB = (item.fileSize / (1024 * 1024)).toFixed(2) + 'MB';
+
+  const formatDate = (timestamp: number) => {
+    const date = new Date(timestamp);
+    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + ' - ' + date.toLocaleDateString();
+  };
+
+  const aiPercent = item.aiPercentage;
+  let statusText = "Human Made";
+  let statusColorClass = "text-emerald-400";
+  let progressColorClass = "bg-emerald-500";
+  
+  if (aiPercent < 35) {
+    statusText = "Human Made";
+    statusColorClass = "text-emerald-400";
+    progressColorClass = "bg-emerald-500";
+  } else if (aiPercent >= 35 && aiPercent < 60) {
+    statusText = "Vùng xám AI";
+    statusColorClass = "text-amber-400";
+    progressColorClass = "bg-amber-500";
+  } else {
+    statusText = "AI Created";
+    statusColorClass = "text-rose-400";
+    progressColorClass = "bg-rose-500";
+  }
+
+  return (
+    <div
+      onClick={() => onSelect(item)}
+      className="glass-panel glass-panel-hover cursor-pointer rounded-2xl p-3 text-left border border-white/5 relative overflow-hidden flex gap-3 items-stretch h-36 transition-all duration-300 hover:scale-[1.02] hover:border-white/10"
+    >
+      {/* Left side: Thumbnail preview */}
+      <div className="w-24 shrink-0 rounded-xl bg-black/40 border border-white/10 overflow-hidden flex items-center justify-center relative">
+        {mediaUrl ? (
+          item.isImage ? (
+            <img src={mediaUrl} alt="Thumb" className="w-full h-full object-cover" />
+          ) : (
+            <video src={mediaUrl} className="w-full h-full object-cover" muted playsInline />
+          )
+        ) : (
+          <div className="text-[10px] text-gray-500 font-bold uppercase select-none">No media</div>
+        )}
+        <div className="absolute bottom-1 right-1 px-1.5 py-0.5 rounded bg-black/75 text-[8px] text-gray-400 border border-white/5 uppercase tracking-wider scale-90">
+          {item.isImage ? 'Ảnh' : 'Video'}
+        </div>
+      </div>
+
+      {/* Right side: Information column */}
+      <div className="flex-1 flex flex-col justify-between min-w-0">
+        <div>
+          {/* Title Row */}
+          <h4 className="text-xs font-bold text-white truncate font-outfit m-0" title={item.fileName}>
+            {item.fileName}
+          </h4>
+
+          {/* Size and Time */}
+          <div className="flex items-center gap-1.5 text-[9px] text-gray-400 mt-1 font-mono">
+            <span className="truncate">{sizeMB}</span>
+            <span>•</span>
+            <div className="flex items-center gap-0.5 min-w-0">
+              <Clock className="h-2.5 w-2.5 shrink-0" />
+              <span className="truncate">{formatDate(item.timestamp)}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Progress and Score display */}
+        <div className="pt-2 border-t border-white/5 flex flex-col gap-1.5">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-1">
+              {aiPercent < 35 ? (
+                <CheckCircle className="h-3 w-3 text-emerald-400 shrink-0" />
+              ) : (
+                <ShieldAlert className="h-3 w-3 text-rose-400 shrink-0" />
+              )}
+              <span className={`text-[10px] font-bold font-outfit uppercase tracking-wider ${statusColorClass} truncate`}>
+                {statusText}
+              </span>
+            </div>
+            <span className={`text-[11px] font-black font-mono ${statusColorClass} shrink-0`}>
+              {aiPercent}%
+            </span>
+          </div>
+          {/* Micro Progress Bar */}
+          <div className="w-full bg-white/5 rounded-full h-1 overflow-hidden">
+            <div className={`h-full ${progressColorClass}`} style={{ width: `${aiPercent}%` }} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export const HistoryList: React.FC<HistoryListProps> = ({
   items,
   onClearHistory,
   onSelectHistoryItem,
 }) => {
   if (items.length === 0) return null;
-
-  const formatDate = (timestamp: number) => {
-    const date = new Date(timestamp);
-    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + ' - ' + date.toLocaleDateString();
-  };
 
   return (
     <div className="w-full max-w-4xl mx-auto mt-16 animate-fadeIn">
@@ -52,83 +166,15 @@ export const HistoryList: React.FC<HistoryListProps> = ({
 
       {/* Grid of history cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {items.map((item) => {
-          const aiPercent = item.aiPercentage;
-          const sizeMB = (item.fileSize / (1024 * 1024)).toFixed(2) + 'MB';
-
-          // Determine three-tier styles dynamically from aiPercentage
-          let statusText = "Human Made";
-          let statusColorClass = "text-emerald-400";
-          
-          if (aiPercent < 35) {
-            statusText = "Human Made";
-            statusColorClass = "text-emerald-400";
-          } else if (aiPercent >= 35 && aiPercent < 60) {
-            statusText = "Vùng xám AI";
-            statusColorClass = "text-amber-400";
-          } else {
-            statusText = "AI Created";
-            statusColorClass = "text-rose-400";
-          }
-
-          return (
-            <div
-              key={item.id}
-              onClick={() => onSelectHistoryItem(item)}
-              className="glass-panel glass-panel-hover cursor-pointer rounded-2xl p-4.5 text-left border border-white/5 relative overflow-hidden flex flex-col justify-between h-36"
-            >
-              <div>
-                {/* Title & Badge Row */}
-                <div className="flex justify-between items-start gap-2">
-                  <h4 className="text-sm font-bold text-white truncate font-outfit flex-1 m-0">
-                    {item.fileName}
-                  </h4>
-                  <span className="text-[10px] uppercase font-bold text-gray-400 font-mono tracking-wide shrink-0">
-                    {item.isImage ? 'Ảnh' : 'Video'}
-                  </span>
-                </div>
-
-                {/* Size and Time */}
-                <div className="flex items-center gap-2 text-[10px] text-gray-400 mt-1 font-mono">
-                  <span className="truncate max-w-[80px]">{sizeMB}</span>
-                  <span>•</span>
-                  <div className="flex items-center gap-0.5">
-                    <Clock className="h-2.5 w-2.5" />
-                    <span>{formatDate(item.timestamp)}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Progress and Score display */}
-              <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between">
-                <div className="flex items-center gap-1.5">
-                  {aiPercent < 35 ? (
-                    <CheckCircle className="h-4 w-4 text-emerald-400" />
-                  ) : aiPercent < 60 ? (
-                    <ShieldAlert className="h-4 w-4 text-amber-400" />
-                  ) : (
-                    <ShieldAlert className="h-4 w-4 text-rose-400" />
-                  )}
-                  <span
-                    className={`text-xs font-bold font-outfit uppercase tracking-wider ${statusColorClass}`}
-                  >
-                    {statusText}
-                  </span>
-                </div>
-
-                <div className="text-right shrink-0">
-                  <span className="text-xs text-gray-400 font-mono">AI Score: </span>
-                  <span
-                    className={`text-sm font-black font-mono ${statusColorClass}`}
-                  >
-                    {aiPercent}%
-                  </span>
-                </div>
-              </div>
-            </div>
-          );
-        })}
+        {items.map((item) => (
+          <HistoryItemCard
+            key={item.id}
+            item={item}
+            onSelect={onSelectHistoryItem}
+          />
+        ))}
       </div>
     </div>
   );
 };
+
