@@ -189,6 +189,7 @@ function App() {
   const [statusText, setStatusText] = useState<string>('');
   const [progress, setProgress] = useState<number>(0);
   const [errorMessage, setErrorMessage] = useState<string>('');
+  const [processingFileName, setProcessingFileName] = useState<string>('');
 
   // Zalo / Facebook In-app Browser Warning State
   const [showInAppAlert, setShowInAppAlert] = useState<boolean>(false);
@@ -392,6 +393,7 @@ function App() {
   const handleFileSelected = async (file: File) => {
     cleanupFileUrl();
     setErrorMessage('');
+    setProcessingFileName(file.name);
     
     let processedFile = file;
     const fileName = processedFile.name.toLowerCase();
@@ -440,6 +442,7 @@ function App() {
     if (!activeFile) return;
 
     setStatus('loading');
+    setProcessingFileName(activeFile.name);
     setProgress(0);
     setErrorMessage('');
     setResult(null);
@@ -727,13 +730,13 @@ function App() {
             </div>
           )}
 
-          {status === 'loading' && activeFile && (
+          {status === 'loading' && (
             <div className="py-12">
               <LoadingState
                 statusText={statusText}
                 progress={progress}
                 isImage={isImage}
-                fileName={activeFile.name}
+                fileName={processingFileName || 'Đang xử lý...'}
               />
             </div>
           )}
