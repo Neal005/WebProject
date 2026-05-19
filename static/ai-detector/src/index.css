@@ -70,5 +70,8 @@
 .upload-format-badge {
   background-color: rgba(99, 102, 241, 0.08) !important;
   border: 1px solid rgba(99, 102, 241, 0.15) !important;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
 }
 
