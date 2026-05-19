@@ -67,3 +67,10 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(99, 102, 241, 0.4);
 }
+
+/* Prevent Zalo WebView image interception and 0-byte download bug */
+.img-zalo-prevent {
+  pointer-events: none !important;
+  -webkit-touch-callout: none !important;
+  user-select: none !important;
+}

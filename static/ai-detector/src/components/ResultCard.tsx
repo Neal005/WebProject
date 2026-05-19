@@ -99,7 +99,7 @@ export const ResultCard: React.FC<ResultCardProps> = ({
                 <img
                   src={fileUrl}
                   alt={fileName}
-                  className="w-full h-full object-cover max-h-[300px]"
+                  className="w-full h-full object-cover max-h-[300px] img-zalo-prevent"
                 />
               ) : (
                 <video
