@@ -391,13 +391,42 @@ function App() {
 
   const handleFileSelected = async (file: File) => {
     cleanupFileUrl();
-    setActiveFile(file);
-
-    const fileName = file.name.toLowerCase();
-    const isImg = /\.(jpg|jpeg|png|webp)$/i.test(fileName);
+    setErrorMessage('');
+    
+    let processedFile = file;
+    const fileName = processedFile.name.toLowerCase();
+    const isHeic = /\.(heic|heif)$/i.test(fileName);
+    const isImg = /\.(jpg|jpeg|png|webp|heic|heif)$/i.test(fileName);
     setIsImage(isImg);
 
-    const url = await createMediaUrl(file, isImg);
+    if (isHeic) {
+      setStatus('loading');
+      setStatusText('Đang giải mã và chuyển đổi ảnh HEIC sang JPEG...');
+      setProgress(30);
+      try {
+        const heic2any = (await import('heic2any')).default;
+        const convertedBlob = await heic2any({
+          blob: processedFile,
+          toType: 'image/jpeg',
+          quality: 0.82
+        });
+        
+        const jpegBlob = Array.isArray(convertedBlob) ? convertedBlob[0] : convertedBlob;
+        const baseName = processedFile.name.substring(0, processedFile.name.lastIndexOf('.')) || processedFile.name;
+        processedFile = new File([jpegBlob], `${baseName}.jpg`, {
+          type: 'image/jpeg',
+          lastModified: Date.now()
+        });
+      } catch (heicErr) {
+        console.error('HEIC conversion failed:', heicErr);
+        setErrorMessage('Không thể giải mã tệp HEIC. Vui lòng thử lại hoặc chọn định dạng khác.');
+        setStatus('error');
+        return;
+      }
+    }
+
+    setActiveFile(processedFile);
+    const url = await createMediaUrl(processedFile, true);
     setFileUrl(url);
     
     // Clear previous results & error states, set to idle for manual scan

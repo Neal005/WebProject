@@ -11,20 +11,20 @@ export const UploadZone: React.FC<UploadZoneProps> = ({ onFileSelected }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Supported mime types and extensions
-  const ALLOWED_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.webp', '.mp4'];
-  const MAX_IMAGE_SIZE_MB = 10;
-  const MAX_VIDEO_SIZE_MB = 50;
+  const ALLOWED_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.webp', '.heic', '.heif', '.mp4'];
+  const MAX_IMAGE_SIZE_MB = 30;
+  const MAX_VIDEO_SIZE_MB = 500;
 
   const validateAndProcessFile = (file: File) => {
     setErrorMessage(null);
 
     const fileName = file.name.toLowerCase();
-    const isImage = /\.(jpg|jpeg|png|webp)$/i.test(fileName);
+    const isImage = /\.(jpg|jpeg|png|webp|heic|heif)$/i.test(fileName);
     const isVideo = /\.mp4$/i.test(fileName);
 
     if (!isImage && !isVideo) {
       setErrorMessage(
-        `Định dạng file không khả dụng. Vui lòng tải lên ảnh (.jpg, .png, .webp) hoặc video (.mp4).`
+        `Định dạng file không khả dụng. Vui lòng tải lên ảnh (.jpg, .png, .webp, .heic) hoặc video (.mp4).`
       );
       return;
     }
@@ -117,11 +117,11 @@ export const UploadZone: React.FC<UploadZoneProps> = ({ onFileSelected }) => {
         <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-medium text-gray-400">
           <div className="flex items-center gap-1.5 rounded-lg bg-white/[0.03] border border-white/5 px-3 py-1.5">
             <Image className="h-3.5 w-3.5 text-indigo-400" />
-            <span>Hình ảnh (.jpg, .png, .webp) &lt; {MAX_IMAGE_SIZE_MB}MB</span>
+            <span>Hình ảnh (.jpg, .png, .webp, .heic) &lt; {MAX_IMAGE_SIZE_MB}MB</span>
           </div>
           <div className="flex items-center gap-1.5 rounded-lg bg-white/[0.03] border border-white/5 px-3 py-1.5">
             <Film className="h-3.5 w-3.5 text-purple-400" />
-            <span>Video (.mp4) &lt; {MAX_VIDEO_SIZE_MB}MB</span>
+            <span>Video (.mp4) (&gt; 50MB tự động cắt ngắn)</span>
           </div>
         </div>
       </div>
