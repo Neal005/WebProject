@@ -99,7 +99,7 @@ export const UploadZone: React.FC<UploadZoneProps> = ({ onFileSelected }) => {
         />
 
         {/* Upload Graphics */}
-        <div className="relative mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-white/[0.03] border border-white/5 shadow-inner">
+        <div className="relative mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl upload-format-badge shadow-inner">
           <UploadCloud className="h-10 w-10 text-indigo-400 animate-pulse" />
         </div>
 
@@ -113,11 +113,11 @@ export const UploadZone: React.FC<UploadZoneProps> = ({ onFileSelected }) => {
 
         {/* Accept Formats Showcase */}
         <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-medium text-gray-400">
-          <div className="flex items-center gap-1.5 rounded-lg bg-white/[0.03] border border-white/5 px-3 py-1.5">
+          <div className="flex items-center gap-1.5 rounded-lg upload-format-badge px-3 py-1.5">
             <Image className="h-3.5 w-3.5 text-indigo-400" />
             <span>Hình ảnh (.jpg, .png, .webp, .heic) &lt; {MAX_IMAGE_SIZE_MB}MB</span>
           </div>
-          <div className="flex items-center gap-1.5 rounded-lg bg-white/[0.03] border border-white/5 px-3 py-1.5">
+          <div className="flex items-center gap-1.5 rounded-lg upload-format-badge px-3 py-1.5">
             <Film className="h-3.5 w-3.5 text-purple-400" />
             <span>Video (.mp4) (&gt; 50MB tự động cắt ngắn)</span>
           </div>
