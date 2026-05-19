@@ -31,14 +31,26 @@ const HistoryItemCard: React.FC<{
 
     getMediaFile(item.id).then((file) => {
       if (file && active) {
-        url = URL.createObjectURL(file);
-        setMediaUrl(url);
+        const isZalo = /zalo/i.test(navigator.userAgent);
+        const isFb = /fbav|fbios|fb_iab|messenger/i.test(navigator.userAgent);
+        if ((isZalo || isFb) && item.isImage) {
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            if (active) {
+              setMediaUrl(reader.result as string);
+            }
+          };
+          reader.readAsDataURL(file);
+        } else {
+          url = URL.createObjectURL(file);
+          setMediaUrl(url);
+        }
       }
     });
 
     return () => {
       active = false;
-      if (url) {
+      if (url && url.startsWith('blob:')) {
         URL.revokeObjectURL(url);
       }
     };

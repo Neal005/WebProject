@@ -5,7 +5,7 @@ import { LoadingState } from './components/LoadingState';
 import { ResultCard } from './components/ResultCard';
 import { HistoryList } from './components/HistoryList';
 import type { HistoryItem } from './components/HistoryList';
-import { ShieldCheck, Cpu, HardDrive, Network, X, BookOpen, AlertCircle, Settings, RotateCcw, Trash2 } from 'lucide-react';
+import { ShieldCheck, Cpu, HardDrive, Network, X, BookOpen, AlertCircle, Settings, RotateCcw, Trash2, AlertTriangle } from 'lucide-react';
 import { getMediaFile, saveMediaFile, clearAllMediaFiles } from './utils/db';/**
  * Automatically compresses massive images in the browser using HTML5 Canvas
  * down to a maximum resolution of 1920px and 82% Jpeg quality.
@@ -179,7 +179,6 @@ const trimVideoInBrowser = (
   });
 };
 
-
 function App() {
   // Application Core States
   const [activeFile, setActiveFile] = useState<File | null>(null);
@@ -190,6 +189,28 @@ function App() {
   const [statusText, setStatusText] = useState<string>('');
   const [progress, setProgress] = useState<number>(0);
   const [errorMessage, setErrorMessage] = useState<string>('');
+
+  // Zalo / Facebook In-app Browser Warning State
+  const [showInAppAlert, setShowInAppAlert] = useState<boolean>(false);
+
+  const isZalo = /zalo/i.test(navigator.userAgent);
+  const isFb = /fbav|fbios|fb_iab|messenger/i.test(navigator.userAgent);
+  const isInAppBrowser = isZalo || isFb;
+
+  // Convert files/blobs to Base64 in Zalo/FB In-app browser to bypass Zalo's 0-byte download bug
+  const createMediaUrl = (file: File | Blob, isImg: boolean): Promise<string> => {
+    return new Promise((resolve) => {
+      if (isInAppBrowser && isImg) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          resolve(reader.result as string);
+        };
+        reader.readAsDataURL(file);
+      } else {
+        resolve(URL.createObjectURL(file));
+      }
+    });
+  };
 
   // Results State
   const [result, setResult] = useState<{
@@ -239,13 +260,14 @@ function App() {
 
   // Load history & settings from localStorage on mount
   useEffect(() => {
+    if (isInAppBrowser) {
+      setShowInAppAlert(true);
+    }
     try {
       const savedHistory = localStorage.getItem('ai_detector_history');
       if (savedHistory) {
         setHistory(JSON.parse(savedHistory));
       }
-      
-      // Load FastAPI Configuration
       
       const savedFastApiUrl = localStorage.getItem('ai_detector_fastapi_url');
       if (savedFastApiUrl) {
@@ -347,7 +369,7 @@ function App() {
       const storedFile = await getMediaFile(item.id);
       if (storedFile) {
         setActiveFile(storedFile);
-        const url = URL.createObjectURL(storedFile);
+        const url = await createMediaUrl(storedFile, item.isImage);
         setFileUrl(url);
       } else {
         setActiveFile(null);
@@ -367,15 +389,16 @@ function App() {
     setStatus('success');
   };
 
-  const handleFileSelected = (file: File) => {
+  const handleFileSelected = async (file: File) => {
     cleanupFileUrl();
     setActiveFile(file);
-    const url = URL.createObjectURL(file);
-    setFileUrl(url);
 
     const fileName = file.name.toLowerCase();
     const isImg = /\.(jpg|jpeg|png|webp)$/i.test(fileName);
     setIsImage(isImg);
+
+    const url = await createMediaUrl(file, isImg);
+    setFileUrl(url);
     
     // Clear previous results & error states, set to idle for manual scan
     setStatus('idle');
@@ -404,7 +427,7 @@ function App() {
           
           // Re-create file URL preview for the compressed image
           cleanupFileUrl();
-          const newUrl = URL.createObjectURL(processedFile);
+          const newUrl = await createMediaUrl(processedFile, true);
           setFileUrl(newUrl);
         } catch (imgCompressErr) {
           console.warn('Image compression failed, using original file:', imgCompressErr);
@@ -419,7 +442,7 @@ function App() {
           
           // Re-create file URL preview for the trimmed video
           cleanupFileUrl();
-          const newUrl = URL.createObjectURL(processedFile);
+          const newUrl = await createMediaUrl(processedFile, false);
           setFileUrl(newUrl);
         } catch (vidTrimErr: any) {
           console.warn('Video trimming failed, using original file:', vidTrimErr);
@@ -522,6 +545,36 @@ function App() {
           onOpenAbout={() => setShowAboutModal(true)} 
           onOpenSettings={() => setShowSettingsModal(true)}
         />
+
+        {/* Zalo / Facebook In-app Browser Warning Alert Banner */}
+        {showInAppAlert && (
+          <div className="w-full bg-[#030712]/90 border-b border-amber-500/10 py-3.5 px-4 sm:px-6 relative overflow-hidden backdrop-blur-md animate-fadeIn">
+            {/* Background Glow */}
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-amber-500/5 via-transparent to-transparent pointer-events-none" />
+            
+            <div className="mx-auto max-w-7xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 relative z-10">
+              <div className="flex items-start gap-3 text-left">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-amber-500/10 border border-amber-500/25">
+                  <AlertTriangle className="h-4.5 w-4.5 text-amber-400" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-amber-300 font-outfit mb-0.5">Phát hiện Trình duyệt Nhúng (In-app Browser)</h4>
+                  <p className="text-xs text-gray-400 leading-normal m-0 max-w-4xl">
+                    Bạn đang chạy ứng dụng trong WebView của <strong>Zalo / Facebook</strong>. Để ngăn trình duyệt tự động tạo tệp ảnh rác (0-byte) vào album điện thoại và đảm bảo hiệu năng tối ưu, vui lòng bấm vào nút <strong>3 chấm (•••)</strong> ở góc trên bên phải màn hình và chọn <strong>"Mở bằng trình duyệt ngoài"</strong> (Chrome/Safari).
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 shrink-0 self-end sm:self-center">
+                <button
+                  onClick={() => setShowInAppAlert(false)}
+                  className="rounded-xl border border-white/5 bg-white/5 px-3 py-1.5 text-xs font-semibold text-gray-400 hover:text-white hover:bg-white/10 transition-all cursor-pointer"
+                >
+                  Bỏ qua
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         <main className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
           
