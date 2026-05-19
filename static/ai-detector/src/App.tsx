@@ -568,7 +568,7 @@ function App() {
             <div className="animate-fadeIn">
               {/* Hero Banner Text */}
               <div className="text-center mb-16 relative">
-                <div className="absolute -top-10 left-1/2 -translate-x-1/2 h-36 w-36 rounded-full bg-indigo-500/10 blur-[80px] pointer-events-none" />
+                <div className="absolute -top-10 left-1/2 -translate-x-1/2 h-36 w-36 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%)' }} />
                 
                 <div className="mx-auto inline-flex items-center gap-1.5 rounded-full border border-indigo-500/15 bg-indigo-500/5 px-3 py-1 text-xs font-semibold text-indigo-300 mb-6">
                   <ShieldCheck className="h-3.5 w-3.5" />

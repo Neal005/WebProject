@@ -87,8 +87,8 @@ export const UploadZone: React.FC<UploadZoneProps> = ({ onFileSelected }) => {
         }`}
       >
         {/* Glow Effects */}
-        <div className="absolute -top-40 -left-40 h-80 w-80 rounded-full bg-indigo-500/10 blur-[100px] pointer-events-none" />
-        <div className="absolute -bottom-40 -right-40 h-80 w-80 rounded-full bg-purple-500/10 blur-[100px] pointer-events-none" />
+        <div className="absolute -top-40 -left-40 h-80 w-80 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%)' }} />
+        <div className="absolute -bottom-40 -right-40 h-80 w-80 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(168,85,247,0.15) 0%, transparent 70%)' }} />
 
         <input
           ref={fileInputRef}

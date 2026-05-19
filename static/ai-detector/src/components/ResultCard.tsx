@@ -38,7 +38,7 @@ export const ResultCard: React.FC<ResultCardProps> = ({
   let verdictColorClass = "";       // Text color
   let progressColorClass = "";      // Background bar color
   let badgeColorClass = "";         // Badge border, bg, text colors
-  let glowColorClass = "";          // Blur glimmer glow background
+  let glowColorStyle: React.CSSProperties = {}; // Blur glimmer glow background
   let circleStrokeClass = "";       // SVG ring stroke color
   let indicatorLabelColorClass = ""; // Center Counter small label color
 
@@ -47,7 +47,7 @@ export const ResultCard: React.FC<ResultCardProps> = ({
     verdictColorClass = "text-emerald-400";
     progressColorClass = "bg-emerald-500";
     badgeColorClass = "border-emerald-500/20 bg-emerald-500/10 text-emerald-400";
-    glowColorClass = "bg-emerald-500/15";
+    glowColorStyle = { background: 'radial-gradient(circle, rgba(16,185,129,0.15) 0%, transparent 70%)' };
     circleStrokeClass = "stroke-emerald-500 shadow-[0_0_20px_rgba(16,185,129,0.4)]";
     indicatorLabelColorClass = "text-emerald-400";
   } else if (aiPercentage >= 35 && aiPercentage < 60) {
@@ -55,7 +55,7 @@ export const ResultCard: React.FC<ResultCardProps> = ({
     verdictColorClass = "text-amber-400";
     progressColorClass = "bg-amber-500";
     badgeColorClass = "border-amber-500/20 bg-amber-500/10 text-amber-400";
-    glowColorClass = "bg-amber-500/15";
+    glowColorStyle = { background: 'radial-gradient(circle, rgba(245,158,11,0.15) 0%, transparent 70%)' };
     circleStrokeClass = "stroke-amber-500 shadow-[0_0_20px_rgba(245,158,11,0.4)]";
     indicatorLabelColorClass = "text-amber-400";
   } else {
@@ -63,7 +63,7 @@ export const ResultCard: React.FC<ResultCardProps> = ({
     verdictColorClass = "text-rose-400";
     progressColorClass = "bg-rose-500";
     badgeColorClass = "border-rose-500/20 bg-rose-500/10 text-rose-400";
-    glowColorClass = "bg-rose-500/15";
+    glowColorStyle = { background: 'radial-gradient(circle, rgba(244,63,94,0.15) 0%, transparent 70%)' };
     circleStrokeClass = "stroke-rose-500 shadow-[0_0_20px_rgba(244,63,94,0.4)]";
     indicatorLabelColorClass = "text-rose-400";
   }
@@ -90,7 +90,7 @@ export const ResultCard: React.FC<ResultCardProps> = ({
         
         {/* Left Side: Preview of File */}
         <div className="md:col-span-5 glass-panel rounded-3xl p-5 border border-white/5 flex flex-col justify-between relative overflow-hidden">
-          <div className="absolute -top-24 -left-24 h-48 w-48 rounded-full bg-indigo-500/10 blur-[60px] pointer-events-none" />
+          <div className="absolute -top-24 -left-24 h-48 w-48 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%)' }} />
           
           <div>
             <h4 className="text-sm font-bold uppercase tracking-wider text-gray-400 font-outfit mb-3">Tệp tin kiểm tra</h4>
@@ -126,7 +126,8 @@ export const ResultCard: React.FC<ResultCardProps> = ({
         <div className="md:col-span-7 glass-panel rounded-3xl p-6 sm:p-8 border border-white/5 relative overflow-hidden flex flex-col justify-between">
           {/* Verdict Theme Background Glimmer */}
           <div
-            className={`absolute -top-32 -right-32 h-64 w-64 rounded-full blur-[80px] pointer-events-none transition-all duration-1000 ${glowColorClass}`}
+            className="absolute -top-32 -right-32 h-64 w-64 rounded-full pointer-events-none transition-all duration-1000"
+            style={glowColorStyle}
           />
 
           {/* Verdict Header Badge */}

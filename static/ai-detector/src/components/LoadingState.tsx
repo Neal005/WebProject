@@ -34,7 +34,7 @@ export const LoadingState: React.FC<LoadingStateProps> = ({
   return (
     <div className="w-full max-w-2xl mx-auto glass-panel rounded-3xl p-8 sm:p-12 border border-white/5 relative overflow-hidden">
       {/* Background radial glow */}
-      <div className="absolute -top-24 left-1/2 -translate-x-1/2 h-48 w-48 rounded-full bg-indigo-500/20 blur-[60px] pointer-events-none" />
+      <div className="absolute -top-24 left-1/2 -translate-x-1/2 h-48 w-48 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(99,102,241,0.20) 0%, transparent 70%)' }} />
 
       <div className="flex flex-col items-center text-center">
         {/* Core Animated Spinner */}
