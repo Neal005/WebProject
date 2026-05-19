@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { UploadCloud, Image, Film, AlertCircle } from 'lucide-react';
+import { UploadCloud, Image as ImageIcon, Film, AlertCircle } from 'lucide-react';
 
 interface UploadZoneProps {
   onFileSelected: (file: File) => void;
@@ -115,7 +115,7 @@ export const UploadZone: React.FC<UploadZoneProps> = ({ onFileSelected }) => {
         {/* Accept Formats Showcase */}
         <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-medium text-gray-400">
           <div className="flex items-center gap-1.5 rounded-lg upload-format-badge px-3 py-1.5">
-            <Image className="h-3.5 w-3.5 text-indigo-400" />
+            <ImageIcon className="h-3.5 w-3.5 text-indigo-400" />
             <span>Hình ảnh (.jpg, .png, .webp, .heic) &lt; {MAX_IMAGE_SIZE_MB}MB</span>
           </div>
           <div className="flex items-center gap-1.5 rounded-lg upload-format-badge px-3 py-1.5">
