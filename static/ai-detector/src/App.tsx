@@ -643,7 +643,15 @@ function App() {
                   <div className="glass-panel border border-white/10 rounded-3xl p-5 my-8 animate-fadeIn text-left flex flex-col sm:flex-row gap-5 items-center">
                     <div className="h-28 w-28 shrink-0 rounded-2xl bg-black/40 border border-white/15 overflow-hidden flex items-center justify-center relative">
                       {isImage && fileUrl ? (
-                        <img src={fileUrl} alt="Preview" className="h-full w-full object-cover img-zalo-prevent" />
+                        <div
+                          className="h-full w-full"
+                          style={{
+                            backgroundImage: `url(${fileUrl})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                            backgroundRepeat: 'no-repeat'
+                          }}
+                        />
                       ) : fileUrl ? (
                         <video src={fileUrl} className="h-full w-full object-cover" muted loop playsInline />
                       ) : (

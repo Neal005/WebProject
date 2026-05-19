@@ -96,10 +96,15 @@ export const ResultCard: React.FC<ResultCardProps> = ({
             <h4 className="text-sm font-bold uppercase tracking-wider text-gray-400 font-outfit mb-3">Tệp tin kiểm tra</h4>
             <div className="relative rounded-2xl overflow-hidden bg-black/40 border border-white/5 aspect-video md:aspect-square flex items-center justify-center">
               {isImage ? (
-                <img
-                  src={fileUrl}
-                  alt={fileName}
-                  className="w-full h-full object-cover max-h-[300px] img-zalo-prevent"
+                <div
+                  title={fileName}
+                  className="w-full h-full max-h-[300px]"
+                  style={{
+                    backgroundImage: `url(${fileUrl})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat'
+                  }}
                 />
               ) : (
                 <video

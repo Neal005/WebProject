@@ -91,7 +91,15 @@ const HistoryItemCard: React.FC<{
       <div className="w-24 shrink-0 rounded-xl bg-black/40 border border-white/10 overflow-hidden flex items-center justify-center relative">
         {mediaUrl ? (
           item.isImage ? (
-            <img src={mediaUrl} alt="Thumb" className="w-full h-full object-cover img-zalo-prevent" />
+            <div
+              className="w-full h-full"
+              style={{
+                backgroundImage: `url(${mediaUrl})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat'
+              }}
+            />
           ) : (
             <video src={mediaUrl} className="w-full h-full object-cover" muted playsInline />
           )
