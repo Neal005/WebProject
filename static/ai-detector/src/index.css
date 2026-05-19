@@ -68,7 +68,7 @@
 
 /* Custom upload formats badge to bypass WebView class-name parser heuristic inverters */
 .upload-format-badge {
-  background-color: rgba(255, 255, 255, 0.05) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  background-color: rgba(99, 102, 241, 0.08) !important;
+  border: 1px solid rgba(99, 102, 241, 0.15) !important;
 }
 
