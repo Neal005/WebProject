@@ -10,8 +10,6 @@ export const UploadZone: React.FC<UploadZoneProps> = ({ onFileSelected }) => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // Supported mime types and extensions
-  const ALLOWED_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.webp', '.heic', '.heif', '.mp4'];
   const MAX_IMAGE_SIZE_MB = 30;
   const MAX_VIDEO_SIZE_MB = 500;
 
@@ -96,7 +94,7 @@ export const UploadZone: React.FC<UploadZoneProps> = ({ onFileSelected }) => {
           ref={fileInputRef}
           type="file"
           className="hidden"
-          accept={ALLOWED_EXTENSIONS.join(',')}
+          accept="image/*,video/mp4"
           onChange={handleFileChange}
         />
 
