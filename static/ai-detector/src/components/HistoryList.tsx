@@ -31,20 +31,8 @@ const HistoryItemCard: React.FC<{
 
     getMediaFile(item.id).then((file) => {
       if (file && active) {
-        const isZalo = /zalo/i.test(navigator.userAgent);
-        const isFb = /fbav|fbios|fb_iab|messenger/i.test(navigator.userAgent);
-        if ((isZalo || isFb) && item.isImage) {
-          const reader = new FileReader();
-          reader.onloadend = () => {
-            if (active) {
-              setMediaUrl(reader.result as string);
-            }
-          };
-          reader.readAsDataURL(file);
-        } else {
-          url = URL.createObjectURL(file);
-          setMediaUrl(url);
-        }
+        url = URL.createObjectURL(file);
+        setMediaUrl(url);
       }
     });
 
@@ -91,15 +79,7 @@ const HistoryItemCard: React.FC<{
       <div className="w-24 shrink-0 rounded-xl bg-black/40 border border-white/10 overflow-hidden flex items-center justify-center relative">
         {mediaUrl ? (
           item.isImage ? (
-            <div
-              className="w-full h-full"
-              style={{
-                backgroundImage: `url(${mediaUrl})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat'
-              }}
-            />
+            <img src={mediaUrl} alt="Thumb" className="w-full h-full object-cover" />
           ) : (
             <video src={mediaUrl} className="w-full h-full object-cover" muted playsInline />
           )

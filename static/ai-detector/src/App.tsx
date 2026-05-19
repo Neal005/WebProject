@@ -5,55 +5,60 @@ import { LoadingState } from './components/LoadingState';
 import { ResultCard } from './components/ResultCard';
 import { HistoryList } from './components/HistoryList';
 import type { HistoryItem } from './components/HistoryList';
-import { ShieldCheck, Cpu, HardDrive, Network, X, BookOpen, AlertCircle, Settings, RotateCcw, Trash2, AlertTriangle } from 'lucide-react';
+import { ShieldCheck, Cpu, HardDrive, Network, X, BookOpen, AlertCircle, Settings, RotateCcw, Trash2 } from 'lucide-react';
 import { getMediaFile, saveMediaFile, clearAllMediaFiles } from './utils/db';/**
  * Automatically compresses massive images in the browser using HTML5 Canvas
  * down to a maximum resolution of 1920px and 82% Jpeg quality.
  */
-const compressImageInBrowser = async (file: File): Promise<File> => {
-  try {
-    const bitmap = await createImageBitmap(file);
-    const canvas = document.createElement('canvas');
-    let width = bitmap.width;
-    let height = bitmap.height;
-    
-    const MAX_RES = 1920;
-    if (width > MAX_RES || height > MAX_RES) {
-      if (width > height) {
-        height = Math.round((height * MAX_RES) / width);
-        width = MAX_RES;
-      } else {
-        width = Math.round((width * MAX_RES) / height);
-        height = MAX_RES;
-      }
-    }
-    
-    canvas.width = width;
-    canvas.height = height;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return file;
-    
-    ctx.drawImage(bitmap, 0, 0, width, height);
-    bitmap.close();
-    
-    return new Promise((resolve) => {
-      canvas.toBlob((blob) => {
-        if (blob) {
-          const compressedFile = new File([blob], file.name.replace(/\.[^/.]+$/, "") + "_compressed.jpg", {
-            type: 'image/jpeg',
-            lastModified: Date.now()
-          });
-          console.log(`Image compressed: original=${(file.size / (1024*1024)).toFixed(2)}MB, new=${(compressedFile.size / (1024*1024)).toFixed(2)}MB`);
-          resolve(compressedFile);
+const compressImageInBrowser = (file: File): Promise<File> => {
+  return new Promise((resolve) => {
+    const img = new Image();
+    const objectUrl = URL.createObjectURL(file);
+    img.src = objectUrl;
+
+    img.onload = () => {
+      URL.revokeObjectURL(objectUrl);
+      const canvas = document.createElement('canvas');
+      let width = img.width;
+      let height = img.height;
+
+      const MAX_RES = 1920;
+      if (width > MAX_RES || height > MAX_RES) {
+        if (width > height) {
+          height = Math.round((height * MAX_RES) / width);
+          width = MAX_RES;
         } else {
-          resolve(file);
+          width = Math.round((width * MAX_RES) / height);
+          height = MAX_RES;
         }
-      }, 'image/jpeg', 0.82);
-    });
-  } catch (e) {
-    console.warn("createImageBitmap compression failed, returning original file", e);
-    return file;
-  }
+      }
+
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        ctx.drawImage(img, 0, 0, width, height);
+        canvas.toBlob((blob) => {
+          if (blob) {
+            const compressedFile = new File([blob], file.name.replace(/\.[^/.]+$/, "") + "_compressed.jpg", {
+              type: 'image/jpeg',
+              lastModified: Date.now()
+            });
+            console.log(`Image compressed: original=${(file.size / (1024*1024)).toFixed(2)}MB, new=${(compressedFile.size / (1024*1024)).toFixed(2)}MB`);
+            resolve(compressedFile);
+          } else {
+            resolve(file);
+          }
+        }, 'image/jpeg', 0.82);
+      } else {
+        resolve(file);
+      }
+    };
+    img.onerror = () => {
+      URL.revokeObjectURL(objectUrl);
+      resolve(file);
+    };
+  });
 };
 
 /**
@@ -66,12 +71,6 @@ const trimVideoInBrowser = (
   onProgress?: (progress: number) => void
 ): Promise<File> => {
   return new Promise((resolve, reject) => {
-    const isZalo = /zalo/i.test(navigator.userAgent);
-    const isFb = /fbav|fbios|fb_iab|messenger/i.test(navigator.userAgent);
-    if (isZalo || isFb) {
-      reject(new Error('Trình duyệt nội bộ (Zalo/Facebook) không hỗ trợ xử lý video dung lượng lớn. Vui lòng chọn "Mở bằng trình duyệt" (Chrome/Safari) hoặc tải video dưới 50MB.'));
-      return;
-    }
 
     const video = document.createElement('video');
     video.preload = 'metadata';
@@ -192,26 +191,9 @@ function App() {
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [processingFileName, setProcessingFileName] = useState<string>('');
 
-  // Zalo / Facebook In-app Browser Warning State
-  const [showInAppAlert, setShowInAppAlert] = useState<boolean>(false);
-
-  const isZalo = /zalo/i.test(navigator.userAgent);
-  const isFb = /fbav|fbios|fb_iab|messenger/i.test(navigator.userAgent);
-  const isInAppBrowser = isZalo || isFb;
-
-  // Convert files/blobs to Base64 in Zalo/FB In-app browser to bypass Zalo's 0-byte download bug
-  const createMediaUrl = (file: File | Blob, isImg: boolean): Promise<string> => {
-    return new Promise((resolve) => {
-      if (isInAppBrowser && isImg) {
-        const reader = new FileReader();
-        reader.onloadend = () => {
-          resolve(reader.result as string);
-        };
-        reader.readAsDataURL(file);
-      } else {
-        resolve(URL.createObjectURL(file));
-      }
-    });
+  // Convert files/blobs to standard object URLs
+  const createMediaUrl = (file: File | Blob, _isImg: boolean): Promise<string> => {
+    return Promise.resolve(URL.createObjectURL(file));
   };
 
   // Results State
@@ -262,9 +244,7 @@ function App() {
 
   // Load history & settings from localStorage on mount
   useEffect(() => {
-    if (isInAppBrowser) {
-      setShowInAppAlert(true);
-    }
+
     try {
       const savedHistory = localStorage.getItem('ai_detector_history');
       if (savedHistory) {
@@ -579,35 +559,7 @@ function App() {
           onOpenSettings={() => setShowSettingsModal(true)}
         />
 
-        {/* Zalo / Facebook In-app Browser Warning Alert Banner */}
-        {showInAppAlert && (
-          <div className="w-full bg-[#030712]/90 border-b border-amber-500/10 py-3.5 px-4 sm:px-6 relative overflow-hidden backdrop-blur-md animate-fadeIn">
-            {/* Background Glow */}
-            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-amber-500/5 via-transparent to-transparent pointer-events-none" />
-            
-            <div className="mx-auto max-w-7xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 relative z-10">
-              <div className="flex items-start gap-3 text-left">
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-amber-500/10 border border-amber-500/25">
-                  <AlertTriangle className="h-4.5 w-4.5 text-amber-400" />
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold text-amber-300 font-outfit mb-0.5">Phát hiện Trình duyệt Nhúng (In-app Browser)</h4>
-                  <p className="text-xs text-gray-400 leading-normal m-0 max-w-4xl">
-                    Bạn đang chạy ứng dụng trong WebView của <strong>Zalo / Facebook</strong>. Để ngăn trình duyệt tự động tạo tệp ảnh rác (0-byte) vào album điện thoại và đảm bảo hiệu năng tối ưu, vui lòng bấm vào nút <strong>3 chấm (•••)</strong> ở góc trên bên phải màn hình và chọn <strong>"Mở bằng trình duyệt ngoài"</strong> (Chrome/Safari).
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 shrink-0 self-end sm:self-center">
-                <button
-                  onClick={() => setShowInAppAlert(false)}
-                  className="rounded-xl border border-white/5 bg-white/5 px-3 py-1.5 text-xs font-semibold text-gray-400 hover:text-white hover:bg-white/10 transition-all cursor-pointer"
-                >
-                  Bỏ qua
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
+
 
         <main className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
           
@@ -644,15 +596,7 @@ function App() {
                   <div className="glass-panel border border-white/10 rounded-3xl p-5 my-8 animate-fadeIn text-left flex flex-col sm:flex-row gap-5 items-center">
                     <div className="h-28 w-28 shrink-0 rounded-2xl bg-black/40 border border-white/15 overflow-hidden flex items-center justify-center relative">
                       {isImage && fileUrl ? (
-                        <div
-                          className="h-full w-full"
-                          style={{
-                            backgroundImage: `url(${fileUrl})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
-                            backgroundRepeat: 'no-repeat'
-                          }}
-                        />
+                        <img src={fileUrl} alt="Preview" className="h-full w-full object-cover" />
                       ) : fileUrl ? (
                         <video src={fileUrl} className="h-full w-full object-cover" muted loop playsInline />
                       ) : (
