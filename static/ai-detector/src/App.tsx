@@ -10,56 +10,50 @@ import { getMediaFile, saveMediaFile, clearAllMediaFiles } from './utils/db';/**
  * Automatically compresses massive images in the browser using HTML5 Canvas
  * down to a maximum resolution of 1920px and 82% Jpeg quality.
  */
-const compressImageInBrowser = (file: File): Promise<File> => {
-  return new Promise((resolve) => {
-    const img = new Image();
-    const objectUrl = URL.createObjectURL(file);
-    img.src = objectUrl;
+const compressImageInBrowser = async (file: File): Promise<File> => {
+  try {
+    const bitmap = await createImageBitmap(file);
+    const canvas = document.createElement('canvas');
+    let width = bitmap.width;
+    let height = bitmap.height;
     
-    img.onload = () => {
-      URL.revokeObjectURL(objectUrl);
-      const canvas = document.createElement('canvas');
-      let width = img.width;
-      let height = img.height;
-      
-      const MAX_RES = 1920;
-      if (width > MAX_RES || height > MAX_RES) {
-        if (width > height) {
-          height = Math.round((height * MAX_RES) / width);
-          width = MAX_RES;
-        } else {
-          width = Math.round((width * MAX_RES) / height);
-          height = MAX_RES;
-        }
-      }
-      
-      canvas.width = width;
-      canvas.height = height;
-      const ctx = canvas.getContext('2d');
-      if (ctx) {
-        ctx.drawImage(img, 0, 0, width, height);
-        canvas.toBlob((blob) => {
-          if (blob) {
-            const compressedFile = new File([blob], file.name.replace(/\.[^/.]+$/, "") + "_compressed.jpg", {
-              type: 'image/jpeg',
-              lastModified: Date.now()
-            });
-            console.log(`Image compressed: original=${(file.size / (1024*1024)).toFixed(2)}MB, new=${(compressedFile.size / (1024*1024)).toFixed(2)}MB`);
-            resolve(compressedFile);
-          } else {
-            resolve(file);
-          }
-        }, 'image/jpeg', 0.82);
+    const MAX_RES = 1920;
+    if (width > MAX_RES || height > MAX_RES) {
+      if (width > height) {
+        height = Math.round((height * MAX_RES) / width);
+        width = MAX_RES;
       } else {
-        resolve(file);
+        width = Math.round((width * MAX_RES) / height);
+        height = MAX_RES;
       }
-    };
+    }
     
-    img.onerror = () => {
-      URL.revokeObjectURL(objectUrl);
-      resolve(file);
-    };
-  });
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return file;
+    
+    ctx.drawImage(bitmap, 0, 0, width, height);
+    bitmap.close();
+    
+    return new Promise((resolve) => {
+      canvas.toBlob((blob) => {
+        if (blob) {
+          const compressedFile = new File([blob], file.name.replace(/\.[^/.]+$/, "") + "_compressed.jpg", {
+            type: 'image/jpeg',
+            lastModified: Date.now()
+          });
+          console.log(`Image compressed: original=${(file.size / (1024*1024)).toFixed(2)}MB, new=${(compressedFile.size / (1024*1024)).toFixed(2)}MB`);
+          resolve(compressedFile);
+        } else {
+          resolve(file);
+        }
+      }, 'image/jpeg', 0.82);
+    });
+  } catch (e) {
+    console.warn("createImageBitmap compression failed, returning original file", e);
+    return file;
+  }
 };
 
 /**
@@ -72,6 +66,13 @@ const trimVideoInBrowser = (
   onProgress?: (progress: number) => void
 ): Promise<File> => {
   return new Promise((resolve, reject) => {
+    const isZalo = /zalo/i.test(navigator.userAgent);
+    const isFb = /fbav|fbios|fb_iab|messenger/i.test(navigator.userAgent);
+    if (isZalo || isFb) {
+      reject(new Error('Trình duyệt nội bộ (Zalo/Facebook) không hỗ trợ xử lý video dung lượng lớn. Vui lòng chọn "Mở bằng trình duyệt" (Chrome/Safari) hoặc tải video dưới 50MB.'));
+      return;
+    }
+
     const video = document.createElement('video');
     video.preload = 'metadata';
     video.muted = true;
@@ -428,7 +429,7 @@ function App() {
     }
 
     setActiveFile(processedFile);
-    const url = await createMediaUrl(processedFile, true);
+    const url = await createMediaUrl(processedFile, isImg);
     setFileUrl(url);
     
     // Clear previous results & error states, set to idle for manual scan
