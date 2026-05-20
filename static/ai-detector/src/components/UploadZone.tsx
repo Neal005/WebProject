@@ -95,7 +95,7 @@ export const UploadZone: React.FC<UploadZoneProps> = ({ onFileSelected }) => {
           type="file"
           className="hidden"
           style={{ display: 'none', width: 0, height: 0, opacity: 0, position: 'absolute', pointerEvents: 'none' }}
-          accept="image/*,video/mp4"
+          accept="image/*,video/*"
           onChange={handleFileChange}
         />
 
