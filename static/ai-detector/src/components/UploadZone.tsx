@@ -10,6 +10,13 @@ export const UploadZone: React.FC<UploadZoneProps> = ({ onFileSelected }) => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  // Tự động phát hiện trình duyệt tích hợp (WebView) bị giới hạn như Zalo, Facebook
+  const isRestrictedWebView = React.useMemo(() => {
+    if (typeof window === 'undefined') return false;
+    const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera;
+    return /Zalo|FBAN|FBAV/i.test(userAgent);
+  }, []);
+
   const MAX_IMAGE_SIZE_MB = 30;
   const MAX_VIDEO_SIZE_MB = 500;
 
@@ -95,7 +102,7 @@ export const UploadZone: React.FC<UploadZoneProps> = ({ onFileSelected }) => {
           type="file"
           className="hidden"
           style={{ display: 'none', width: 0, height: 0, opacity: 0, position: 'absolute', pointerEvents: 'none' }}
-          accept="image/*,video/*"
+          accept={isRestrictedWebView ? undefined : "image/*,video/*"}
           onChange={handleFileChange}
         />
 
