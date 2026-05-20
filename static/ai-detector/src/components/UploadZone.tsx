@@ -12,11 +12,49 @@ export const UploadZone: React.FC<UploadZoneProps> = ({ onFileSelected }) => {
   const imageInputRef = useRef<HTMLInputElement>(null);
   const videoInputRef = useRef<HTMLInputElement>(null);
 
-  // Tự động phát hiện trình duyệt tích hợp (WebView) bị giới hạn như Zalo, Facebook
-  const isRestrictedWebView = React.useMemo(() => {
-    if (typeof window === 'undefined') return false;
-    const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera;
-    return /Zalo|FBAN|FBAV/i.test(userAgent);
+  // Trạng thái phát hiện WebView bị giới hạn (Zalo, Facebook)
+  const [isRestrictedWebView, setIsRestrictedWebView] = useState(false);
+
+  // Khắc phục triệt để lỗi Race Condition bằng cách thăm dò (polling) trong 5 giây đầu tiên
+  React.useEffect(() => {
+    const detectWebView = (): boolean => {
+      if (typeof window === 'undefined') return false;
+      
+      const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera;
+      
+      // 1. Kiểm tra User Agent chứa nhãn Zalo hoặc Facebook in-app
+      const hasRestrictedUA = /Zalo|FBAN|FBAV/i.test(userAgent);
+      
+      // 2. Kiểm tra các đối tượng API do Zalo hoặc Facebook tiêm vào môi trường JS toàn cục
+      const hasZaloBridge = !!(window as any).ZaloJSBridge || !!(window as any).ZaloJSSDK || !!(window as any).zaloJS;
+      const hasFBBridge = !!(window as any).FB_HX || !!(window as any).FB_PUBLIC;
+      
+      const isRestricted = hasRestrictedUA || hasZaloBridge || hasFBBridge;
+      
+      if (isRestricted) {
+        setIsRestrictedWebView(true);
+        return true; // Đã nhận diện thành công
+      }
+      return false;
+    };
+
+    // Kiểm tra ngay lập tức khi component mount
+    const found = detectWebView();
+    if (found) return;
+
+    // Sử dụng interval thăm dò liên tục mỗi 150ms để phát hiện kịp thời khi Zalo/Facebook tiêm muộn
+    const startTime = Date.now();
+    const intervalId = setInterval(() => {
+      const isDetected = detectWebView();
+      // Nếu đã phát hiện ra hoặc đã vượt quá 5 giây thì hủy interval
+      if (isDetected || Date.now() - startTime > 5000) {
+        clearInterval(intervalId);
+      }
+    }, 150);
+
+    return () => {
+      clearInterval(intervalId);
+    };
   }, []);
 
   const MAX_IMAGE_SIZE_MB = 30;
