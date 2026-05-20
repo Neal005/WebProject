@@ -9,6 +9,8 @@ export const UploadZone: React.FC<UploadZoneProps> = ({ onFileSelected }) => {
   const [isDragActive, setIsDragActive] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const imageInputRef = useRef<HTMLInputElement>(null);
+  const videoInputRef = useRef<HTMLInputElement>(null);
 
   // Tự động phát hiện trình duyệt tích hợp (WebView) bị giới hạn như Zalo, Facebook
   const isRestrictedWebView = React.useMemo(() => {
@@ -86,23 +88,42 @@ export const UploadZone: React.FC<UploadZoneProps> = ({ onFileSelected }) => {
         onDragOver={handleDrag}
         onDragLeave={handleDrag}
         onDrop={handleDrop}
-        onClick={onButtonClick}
-        className={`glass-panel cursor-pointer relative overflow-hidden rounded-3xl border-2 border-dashed p-10 sm:p-14 text-center transition-all duration-300 ${
+        onClick={isRestrictedWebView ? undefined : onButtonClick}
+        className={`glass-panel relative overflow-hidden rounded-3xl border-2 border-dashed p-10 sm:p-14 text-center transition-all duration-300 ${
           isDragActive
             ? 'border-indigo-400 bg-indigo-500/10 shadow-[0_0_40px_rgba(99,102,241,0.2)] scale-[0.99]'
             : 'border-white/10 hover:border-indigo-500/40 hover:bg-white/[0.02]'
-        }`}
+        } ${isRestrictedWebView ? 'cursor-default' : 'cursor-pointer'}`}
       >
         {/* Glow Effects */}
         <div className="absolute -top-40 -left-40 h-80 w-80 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%)' }} />
         <div className="absolute -bottom-40 -right-40 h-80 w-80 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(168,85,247,0.15) 0%, transparent 70%)' }} />
 
+        {/* General browser input */}
         <input
           ref={fileInputRef}
           type="file"
           className="hidden"
           style={{ display: 'none', width: 0, height: 0, opacity: 0, position: 'absolute', pointerEvents: 'none' }}
-          accept={isRestrictedWebView ? undefined : "image/*,video/*"}
+          accept="image/*,video/*"
+          onChange={handleFileChange}
+        />
+
+        {/* WebView Zalo/Facebook specialized inputs */}
+        <input
+          ref={imageInputRef}
+          type="file"
+          className="hidden"
+          style={{ display: 'none', width: 0, height: 0, opacity: 0, position: 'absolute', pointerEvents: 'none' }}
+          accept="image/*"
+          onChange={handleFileChange}
+        />
+        <input
+          ref={videoInputRef}
+          type="file"
+          className="hidden"
+          style={{ display: 'none', width: 0, height: 0, opacity: 0, position: 'absolute', pointerEvents: 'none' }}
+          accept="video/*"
           onChange={handleFileChange}
         />
 
@@ -130,6 +151,34 @@ export const UploadZone: React.FC<UploadZoneProps> = ({ onFileSelected }) => {
             <span>Video (.mp4) (&gt; 50MB tự động cắt ngắn)</span>
           </div>
         </div>
+
+        {/* WebView Zalo/Facebook specialized interactive buttons */}
+        {isRestrictedWebView && (
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10" style={{ isolation: 'isolate' }}>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                imageInputRef.current?.click();
+              }}
+              className="w-full sm:w-auto flex items-center justify-center gap-2.5 rounded-2xl bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/20 hover:border-indigo-500/40 text-indigo-300 hover:text-white font-semibold px-6 py-3.5 transition-all duration-300 active:scale-[0.97] cursor-pointer shadow-[0_0_20px_rgba(99,102,241,0.05)] hover:shadow-[0_0_25px_rgba(99,102,241,0.15)]"
+            >
+              <ImageIcon className="h-5 w-5" />
+              Tải Ảnh Lên
+            </button>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                videoInputRef.current?.click();
+              }}
+              className="w-full sm:w-auto flex items-center justify-center gap-2.5 rounded-2xl bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/20 hover:border-purple-500/40 text-purple-300 hover:text-white font-semibold px-6 py-3.5 transition-all duration-300 active:scale-[0.97] cursor-pointer shadow-[0_0_20px_rgba(168,85,247,0.05)] hover:shadow-[0_0_25px_rgba(168,85,247,0.15)]"
+            >
+              <Film className="h-5 w-5" />
+              Tải Video Lên
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Error alert panel */}
